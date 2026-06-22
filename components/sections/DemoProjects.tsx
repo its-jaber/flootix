@@ -3,48 +3,32 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import { DEMO_PROJECTS } from "@/lib/constants";
 
-function MiniFlow({ steps, color }: { steps: string[]; color: string }) {
+function MiniFlow({ steps }: { steps: string[] }) {
   return (
     <div className="flex items-center gap-1 flex-wrap mt-4">
       {steps.map((step, i) => (
         <div key={step} className="flex items-center gap-1">
-          <div
-            className="px-2 py-1 rounded-md text-[10px] font-semibold whitespace-nowrap"
-            style={{
-              background: `${color}10`,
-              border: `1px solid ${color}25`,
-              color: color,
-            }}
-          >
+          <div className="px-2 py-1 rounded-md text-[10px] font-semibold text-[#888] bg-[#181818] border border-[#2A2A2A] whitespace-nowrap">
             {step}
           </div>
-          {i < steps.length - 1 && (
-            <ArrowRight size={10} className="text-[#64748B] shrink-0" />
-          )}
+          {i < steps.length - 1 && <ArrowRight size={9} className="text-[#333] shrink-0" />}
         </div>
       ))}
     </div>
   );
 }
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
+const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
 export default function DemoProjects() {
   return (
-    <section id="demo-projects" className="py-24 relative">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#6366F1]/20 to-transparent" />
+    <section id="demo-projects" className="py-28 relative">
+      <div className="absolute top-0 inset-x-0 h-px bg-[#1F1F1F]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -52,20 +36,16 @@ export default function DemoProjects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          <SectionLabel className="justify-center">Real Systems We&apos;ve Built</SectionLabel>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold text-[#F8FAFC] tracking-tight">
-            See How It Works for{" "}
-            <span className="shimmer-text">Different Industries</span>
+          <SectionLabel className="justify-center mb-4">Real Systems We&apos;ve Built</SectionLabel>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            See how it works for{" "}
+            <em className="accent-italic">different industries</em>
           </h2>
-          <p className="mt-4 text-lg text-[#64748B] max-w-xl mx-auto">
-            Real automation flows built for real businesses — ready to adapt for yours.
-          </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -73,43 +53,36 @@ export default function DemoProjects() {
         >
           {DEMO_PROJECTS.map((project) => (
             <motion.div key={project.title} variants={item}>
-              <Card glow className="p-6 h-full flex flex-col">
-                {/* Top */}
-                <div className="flex items-start justify-between mb-3">
+              <div className="group h-full bg-[#111111] border border-[#1F1F1F] rounded-2xl p-6 flex flex-col hover:border-[#2A2A2A] transition-colors">
+                <div className="flex items-start justify-between mb-2">
                   <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B]">
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-[#444]">
                       {project.industry}
                     </span>
-                    <h3 className="text-lg font-bold text-[#F8FAFC] mt-1">{project.title}</h3>
+                    <h3 className="text-base font-bold text-white mt-0.5">{project.title}</h3>
                   </div>
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
-                    style={{ background: `${project.color}15`, border: `1px solid ${project.color}25` }}
-                  >
+                  <div className="w-9 h-9 rounded-xl bg-[#181818] border border-[#2A2A2A] flex items-center justify-center text-base shrink-0">
                     {project.industry === "Education" ? "🎓" :
                       project.industry === "Fitness" ? "💪" :
                       project.industry === "Healthcare" ? "🏥" : "🍽️"}
                   </div>
                 </div>
 
-                {/* Mini flow */}
-                <MiniFlow steps={project.flow} color={project.color} />
+                <MiniFlow steps={project.flow} />
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 mt-4">
                   {project.tags.map((tag) => (
                     <Badge key={tag}>{tag}</Badge>
                   ))}
                 </div>
 
-                {/* CTA */}
-                <div className="mt-5 pt-4 border-t border-[#1E1E2E]">
-                  <Button href="/contact" variant="ghost" size="sm" className="w-full">
+                <div className="mt-5 pt-4 border-t border-[#1F1F1F]">
+                  <Button href="/contact" variant="ghost" size="sm" className="w-full text-xs">
                     View Demo
-                    <ArrowRight size={13} />
+                    <ArrowRight size={12} />
                   </Button>
                 </div>
-              </Card>
+              </div>
             </motion.div>
           ))}
         </motion.div>

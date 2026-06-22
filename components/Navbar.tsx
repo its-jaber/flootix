@@ -21,21 +21,21 @@ export default function Navbar() {
     <motion.header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A0A0F]/80 backdrop-blur-xl border-b border-[#1E1E2E]"
+          ? "bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-[#1F1F1F]"
           : "bg-transparent"
       }`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
-              <Zap size={14} className="text-white" fill="white" />
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-[#C8FF00] flex items-center justify-center">
+              <Zap size={14} className="text-black" fill="black" />
             </div>
-            <span className="text-lg font-bold text-[#F8FAFC] tracking-tight">
+            <span className="text-base font-bold text-white tracking-tight">
               Flowtix
             </span>
           </Link>
@@ -46,7 +46,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-3 py-2 text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors rounded-lg hover:bg-[#1E1E2E]/50"
+                className="px-4 py-2 text-sm text-[#AAAAAA] hover:text-white transition-colors"
               >
                 {link.label}
               </Link>
@@ -55,14 +55,17 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <Link href="/contact" className="text-sm text-[#AAAAAA] hover:text-white transition-colors">
+              Sign in
+            </Link>
             <Button href="/contact" size="sm">
-              Get Free Audit
+              Get started
             </Button>
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile */}
           <button
-            className="md:hidden p-2 text-[#64748B] hover:text-[#F8FAFC] transition-colors"
+            className="md:hidden p-2 text-[#AAAAAA] hover:text-white transition-colors"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -71,11 +74,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            className="md:hidden bg-[#0A0A0F]/95 backdrop-blur-xl border-b border-[#1E1E2E]"
+            className="md:hidden bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-[#1F1F1F]"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -86,7 +88,7 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="px-3 py-3 text-sm text-[#94A3B8] hover:text-[#F8FAFC] transition-colors border-b border-[#1E1E2E]/50"
+                  className="px-3 py-3 text-sm text-[#AAAAAA] hover:text-white transition-colors border-b border-[#1F1F1F]"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -94,7 +96,7 @@ export default function Navbar() {
               ))}
               <div className="pt-3">
                 <Button href="/contact" size="sm" className="w-full">
-                  Get Free Audit
+                  Get started
                 </Button>
               </div>
             </div>

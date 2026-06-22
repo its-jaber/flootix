@@ -1,37 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  BellOff,
-  Clock,
-  Repeat,
-  BarChart2,
-  TrendingDown,
-} from "lucide-react";
+import { BellOff, Clock, Repeat, BarChart2, TrendingDown } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Card from "@/components/ui/Card";
 import { PROBLEMS } from "@/lib/constants";
 
-const iconMap: Record<string, React.ElementType> = {
-  BellOff,
-  Clock,
-  Repeat,
-  BarChart2,
-  TrendingDown,
-};
+const iconMap: Record<string, React.ElementType> = { BellOff, Clock, Repeat, BarChart2, TrendingDown };
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } };
+const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
 export default function Problems() {
   return (
-    <section className="py-24 relative">
+    <section className="py-28 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -40,21 +21,20 @@ export default function Problems() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <SectionLabel className="justify-center">The Problem</SectionLabel>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight">
-            Most Businesses Are Losing{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
-              Customers
-            </span>{" "}
-            Without Knowing It
+          <SectionLabel className="justify-center mb-4">The Problem</SectionLabel>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Most businesses are losing
+            <br />
+            customers{" "}
+            <em className="accent-italic">without knowing it</em>
           </h2>
-          <p className="mt-4 text-lg text-[#64748B] max-w-2xl mx-auto">
-            Every minute without an automated system is a minute your competition is winning.
+          <p className="mt-5 text-[#666] text-lg max-w-xl mx-auto">
+            Every minute without automation is a minute your competition gains.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -64,40 +44,28 @@ export default function Problems() {
             const Icon = iconMap[p.icon];
             return (
               <motion.div key={p.title} variants={item}>
-                <Card glow className="p-6 h-full">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0">
-                      <Icon size={18} className="text-red-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-semibold text-[#F8FAFC] mb-1">
-                        {p.title}
-                      </h3>
-                      <p className="text-sm text-[#64748B] leading-relaxed">
-                        {p.description}
-                      </p>
-                    </div>
+                <div className="group h-full bg-[#111111] border border-[#1F1F1F] rounded-2xl p-6 hover:border-[#2A2A2A] transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/10 flex items-center justify-center mb-4">
+                    <Icon size={17} className="text-red-400" />
                   </div>
-                </Card>
+                  <h3 className="text-sm font-bold text-white mb-2">{p.title}</h3>
+                  <p className="text-sm text-[#666] leading-relaxed">{p.description}</p>
+                </div>
               </motion.div>
             );
           })}
 
-          {/* Last row: wider card */}
+          {/* Bottom warning */}
           <motion.div variants={item} className="sm:col-span-2 lg:col-span-full">
-            <Card className="p-6 border-red-500/10 bg-red-500/5">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center shrink-0">
-                  <span className="text-lg">⚠️</span>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-red-400">The Bottom Line</p>
-                  <p className="text-sm text-[#64748B]">
-                    Without automation, you&apos;re competing with businesses that respond instantly, follow up automatically, and never miss a lead. The gap is widening every day.
-                  </p>
-                </div>
+            <div className="bg-[#111111] border border-red-500/10 rounded-2xl p-5 flex items-center gap-4">
+              <div className="w-8 h-8 rounded-xl bg-red-500/10 flex items-center justify-center shrink-0 text-base">
+                ⚠️
               </div>
-            </Card>
+              <p className="text-sm text-[#888]">
+                <span className="text-red-400 font-semibold">The bottom line: </span>
+                Without automation, you&apos;re competing with businesses that respond instantly and never miss a lead. The gap widens every day.
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

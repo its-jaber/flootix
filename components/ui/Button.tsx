@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
-  variant?: "primary" | "ghost" | "outline";
+  variant?: "primary" | "ghost" | "outline" | "dark";
   size?: "sm" | "md" | "lg";
   href?: string;
   onClick?: () => void;
@@ -24,31 +24,29 @@ export default function Button({
   external = false,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 cursor-pointer select-none";
+    "inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 cursor-pointer select-none whitespace-nowrap";
 
   const sizes = {
     sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-sm",
-    lg: "px-8 py-4 text-base",
+    md: "px-5 py-2.5 text-sm",
+    lg: "px-7 py-3.5 text-base",
   };
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] text-white shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:scale-[1.02]",
+      "bg-[#C8FF00] text-black hover:bg-[#d4ff33] shadow-lg shadow-[#C8FF00]/10 hover:shadow-[#C8FF00]/20 hover:scale-[1.02]",
     ghost:
-      "bg-transparent text-[#F8FAFC] border border-[#1E1E2E] hover:border-[#6366F1] hover:bg-[#6366F1]/5",
+      "bg-transparent text-white border border-[#2A2A2A] hover:border-[#444] hover:bg-white/5",
     outline:
-      "bg-transparent text-[#6366F1] border border-[#6366F1] hover:bg-[#6366F1]/10",
+      "bg-transparent text-[#C8FF00] border border-[#C8FF00]/40 hover:bg-[#C8FF00]/10",
+    dark:
+      "bg-[#1A1A1A] text-white border border-[#2A2A2A] hover:border-[#444] hover:bg-[#222]",
   };
 
   const cls = `${base} ${sizes[size]} ${variants[variant]} ${className}`;
 
   const content = (
-    <motion.span
-      className={cls}
-      whileTap={{ scale: 0.97 }}
-      onClick={onClick}
-    >
+    <motion.span className={cls} whileTap={{ scale: 0.97 }} onClick={onClick}>
       {children}
     </motion.span>
   );

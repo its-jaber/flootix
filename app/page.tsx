@@ -4,6 +4,8 @@ import Problems from "@/components/sections/Problems";
 import Services from "@/components/sections/Services";
 import HowItWorks from "@/components/sections/HowItWorks";
 import DemoProjects from "@/components/sections/DemoProjects";
+import Testimonials from "@/components/sections/Testimonials";
+import Pricing from "@/components/sections/Pricing";
 import Results from "@/components/sections/Results";
 import About from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
@@ -22,6 +24,8 @@ export default function Home() {
       <Services />
       <HowItWorks />
       <DemoProjects />
+      <Testimonials />
+      <Pricing />
       <Results />
       <About />
       <CTA />
