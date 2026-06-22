@@ -8,8 +8,15 @@ export const SITE = {
   founderBio:
     "I'm Jaber — I help businesses in Bangladesh and beyond stop losing customers through missed inquiries and slow follow-up. I build AI-powered websites and automation systems that work 24/7 so your business never misses an opportunity.",
   location: "Bangladesh",
-  whatsapp: "https://wa.me/8801XXXXXXXXX",
-  email: "hello@flowtix.agency",
+  whatsapp: "https://wa.me/8801303545774",
+  whatsappDisplay: "+880 1303 545774",
+  email: "contact@floowtix.com",
+  social: {
+    facebook: "",
+    instagram: "",
+    linkedin: "",
+    twitter: "",
+  },
 };
 
 export const NAV_LINKS = [
