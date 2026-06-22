@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Zap, Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
+import Logo from "./ui/Logo";
 import { NAV_LINKS, FOOTER_INDUSTRIES, SITE } from "@/lib/constants";
 
 export default function Footer() {
@@ -9,12 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-[#C8FF00] flex items-center justify-center">
-                <Zap size={14} className="text-black" fill="black" />
-              </div>
-              <span className="text-base font-bold text-white">Flowtix</span>
-            </Link>
+            <Logo className="mb-4" />
             <p className="text-sm text-[#888] leading-relaxed max-w-xs mb-6">
               {SITE.tagline} — AI-powered websites and automation systems that
               work 24/7 so your business never misses a lead.
@@ -79,7 +74,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-[#1F1F1F] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[#555]">
-            © 2025 Flowtix. All rights reserved.
+            © 2025 FlowTix. All rights reserved.
           </p>
           <p className="text-xs text-[#555]">
             Built for businesses that want to grow faster.
