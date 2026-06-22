@@ -42,7 +42,7 @@ export default function ContactPage() {
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, #C8FF00, transparent 60%)",
+            "radial-gradient(ellipse at 50% 0%, #2170e9, transparent 60%)",
         }}
       />
 
@@ -76,8 +76,8 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {submitted ? (
-              <div className="bg-[#111111] border border-[#C8FF00]/20 rounded-2xl p-12 text-center">
-                <div className="w-16 h-16 rounded-2xl bg-[#C8FF00]/10 flex items-center justify-center mx-auto mb-4 text-3xl">
+              <div className="bg-[#111111] border border-[#2170e9]/20 rounded-2xl p-12 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-[#2170e9]/10 flex items-center justify-center mx-auto mb-4 text-3xl">
                   ✅
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
@@ -114,7 +114,7 @@ export default function ContactPage() {
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Jaber Ahmed"
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
                     />
                   </div>
                   <div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                       value={form.business}
                       onChange={(e) => setForm({ ...form, business: e.target.value })}
                       placeholder="Your Business"
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
                     />
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export default function ContactPage() {
                       required
                       value={form.industry}
                       onChange={(e) => setForm({ ...form, industry: e.target.value })}
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#2170e9]/40 transition-colors"
                     >
                       <option value="" disabled>
                         Select industry
@@ -163,7 +163,7 @@ export default function ContactPage() {
                       value={form.whatsapp}
                       onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
                       placeholder="+880 1X XXXX XXXX"
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
                     />
                   </div>
                 </div>
@@ -177,13 +177,13 @@ export default function ContactPage() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="What problems are you facing? How many leads do you get per day? What does your current follow-up process look like?"
-                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors resize-none"
+                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#C8FF00] text-black font-bold rounded-full hover:bg-[#d4ff33] transition-colors text-sm"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#2170e9] text-white font-bold rounded-full hover:bg-[#3b82f6] transition-colors text-sm"
                 >
                   Send Message
                   <Send size={14} />
@@ -221,16 +221,16 @@ export default function ContactPage() {
             {/* Email */}
             <a
               href={`mailto:${SITE.email}`}
-              className="block bg-[#111111] border border-[#1F1F1F] rounded-2xl p-6 hover:border-[#C8FF00]/20 transition-colors group"
+              className="block bg-[#111111] border border-[#1F1F1F] rounded-2xl p-6 hover:border-[#2170e9]/20 transition-colors group"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#C8FF00]/10 flex items-center justify-center mb-3">
-                <Mail size={18} className="text-[#C8FF00]" />
+              <div className="w-10 h-10 rounded-xl bg-[#2170e9]/10 flex items-center justify-center mb-3">
+                <Mail size={18} className="text-[#2170e9]" />
               </div>
               <h3 className="text-sm font-bold text-white mb-1">Email</h3>
               <p className="text-sm text-[#888] mb-2">
                 Send us a detailed message anytime.
               </p>
-              <p className="text-sm font-semibold text-[#C8FF00]">
+              <p className="text-sm font-semibold text-[#2170e9]">
                 {SITE.email}
               </p>
             </a>
@@ -258,7 +258,7 @@ export default function ContactPage() {
                   "We propose a solution",
                 ].map((s, i) => (
                   <div key={s} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#C8FF00]/10 border border-[#C8FF00]/20 flex items-center justify-center text-[9px] font-bold text-[#C8FF00] shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-[#2170e9]/10 border border-[#2170e9]/20 flex items-center justify-center text-[9px] font-bold text-[#2170e9] shrink-0">
                       {i + 1}
                     </div>
                     <p className="text-xs text-[#888]">{s}</p>

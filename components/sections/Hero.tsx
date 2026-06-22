@@ -25,7 +25,7 @@ const KPICard = ({
     animate={{ opacity: 1, scale: 1 }}
     transition={{ delay, duration: 0.5, type: "spring" }}
   >
-    <p className="text-sm font-bold text-[#C8FF00] whitespace-nowrap">{value}</p>
+    <p className="text-sm font-bold text-[#2170e9] whitespace-nowrap">{value}</p>
     <p className="text-[11px] text-[#888] whitespace-nowrap mt-0.5">{label}</p>
   </motion.div>
 );
@@ -45,7 +45,7 @@ export default function Hero() {
           }}
         />
         {/* Top accent line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-[#C8FF00]/30 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-[#2170e9]/30 to-transparent" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -123,8 +123,8 @@ export default function Hero() {
 
               <div className="mt-5 flex items-center justify-center gap-2">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8FF00] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#C8FF00]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2170e9] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#2170e9]" />
                 </span>
                 <span className="text-[11px] text-[#888]">
                   System running live

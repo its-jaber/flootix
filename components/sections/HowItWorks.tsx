@@ -39,7 +39,7 @@ export default function HowItWorks() {
             <div className="absolute top-2 inset-x-0 h-px bg-[#2A2A2A]" />
             {!shouldReduce && (
               <motion.div
-                className="absolute top-[3px] -translate-y-1/2 w-3 h-3 rounded-full bg-[#C8FF00] shadow-lg shadow-[#C8FF00]/30"
+                className="absolute top-[3px] -translate-y-1/2 w-3 h-3 rounded-full bg-[#2170e9] shadow-lg shadow-[#2170e9]/30"
                 style={{ left: dotX }}
               />
             )}
@@ -47,7 +47,7 @@ export default function HowItWorks() {
               {STEPS.map((_, i) => (
                 <div
                   key={i}
-                  className="w-4 h-4 rounded-full border-2 border-[#C8FF00]/40 bg-[#0A0A0A]"
+                  className="w-4 h-4 rounded-full border-2 border-[#2170e9]/40 bg-[#0A0A0A]"
                 />
               ))}
             </div>
@@ -85,7 +85,7 @@ export default function HowItWorks() {
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
               <div className="flex flex-col items-center">
-                <div className="w-9 h-9 rounded-full bg-[#C8FF00]/10 border border-[#C8FF00]/25 flex items-center justify-center text-xs font-bold text-[#C8FF00] shrink-0">
+                <div className="w-9 h-9 rounded-full bg-[#2170e9]/10 border border-[#2170e9]/25 flex items-center justify-center text-xs font-bold text-[#2170e9] shrink-0">
                   {i + 1}
                 </div>
                 {i < STEPS.length - 1 && (

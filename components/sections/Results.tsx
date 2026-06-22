@@ -41,13 +41,13 @@ export default function Results() {
             return (
               <motion.div key={r.metric} variants={item}>
                 <div className="group h-full bg-[#111111] border border-[#2A2A2A] rounded-2xl p-8 hover:border-[#3A3A3A] transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-[#C8FF00]/10 border border-[#C8FF00]/20 flex items-center justify-center mb-5">
-                    <Icon size={18} className="text-[#C8FF00]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#2170e9]/10 border border-[#2170e9]/20 flex items-center justify-center mb-5">
+                    <Icon size={18} className="text-[#2170e9]" />
                   </div>
                   <div className="text-5xl font-black text-white tracking-tight mb-1">
                     {r.metric}
                   </div>
-                  <p className="text-sm font-semibold text-[#C8FF00] mb-1">{r.description}</p>
+                  <p className="text-sm font-semibold text-[#2170e9] mb-1">{r.description}</p>
                   <p className="text-xs text-[#888]">{r.label}</p>
                 </div>
               </motion.div>

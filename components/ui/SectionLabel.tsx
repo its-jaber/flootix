@@ -6,7 +6,7 @@ interface SectionLabelProps {
 export default function SectionLabel({ children, className = "" }: SectionLabelProps) {
   return (
     <div className={`inline-flex items-center gap-2 ${className}`}>
-      <span className="text-[#C8FF00]">◆</span>
+      <span className="text-[#2170e9]">◆</span>
       <span className="text-xs font-medium tracking-wide text-[#AAAAAA]">
         {children}
       </span>

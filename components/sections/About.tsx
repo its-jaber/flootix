@@ -21,11 +21,11 @@ export default function About() {
           >
             {/* Avatar */}
             <div className="relative">
-              <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-[#C8FF00]/20 to-[#C8FF00]/5 border border-[#C8FF00]/20 flex items-center justify-center text-3xl font-black text-[#C8FF00]">
+              <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-[#2170e9]/20 to-[#2170e9]/5 border border-[#2170e9]/20 flex items-center justify-center text-3xl font-black text-[#2170e9]">
                 JA
               </div>
               <div className="absolute -bottom-2 -right-2 bg-[#111111] border border-[#2A2A2A] rounded-full px-2.5 py-1 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C8FF00] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2170e9] animate-pulse" />
                 <span className="text-[10px] font-bold text-white">Available</span>
               </div>
             </div>
@@ -38,7 +38,7 @@ export default function About() {
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
               {FOUNDER_CREDIBILITY.map((c) => (
                 <div key={c} className="flex items-center gap-1.5 bg-[#111111] border border-[#1F1F1F] rounded-full px-3 py-1.5">
-                  <CheckCircle2 size={11} className="text-[#C8FF00]" />
+                  <CheckCircle2 size={11} className="text-[#2170e9]" />
                   <span className="text-xs text-[#888]">{c}</span>
                 </div>
               ))}
@@ -78,7 +78,7 @@ export default function About() {
                 "Flowtix isn't a generic agency. We build systems specific to your industry and goals.",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-3">
-                  <div className="w-1 h-1 rounded-full bg-[#C8FF00] mt-2.5 shrink-0" />
+                  <div className="w-1 h-1 rounded-full bg-[#2170e9] mt-2.5 shrink-0" />
                   <p className="text-sm text-[#666] leading-relaxed">{point}</p>
                 </div>
               ))}

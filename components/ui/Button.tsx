@@ -34,11 +34,11 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-[#C8FF00] text-black hover:bg-[#d4ff33] shadow-lg shadow-[#C8FF00]/10 hover:shadow-[#C8FF00]/20 hover:scale-[1.02]",
+      "bg-[#2170e9] text-white hover:bg-[#3b82f6] shadow-lg shadow-[#2170e9]/10 hover:shadow-[#2170e9]/20 hover:scale-[1.02]",
     ghost:
       "bg-transparent text-white border border-[#2A2A2A] hover:border-[#444] hover:bg-white/5",
     outline:
-      "bg-transparent text-[#C8FF00] border border-[#C8FF00]/40 hover:bg-[#C8FF00]/10",
+      "bg-transparent text-[#2170e9] border border-[#2170e9]/40 hover:bg-[#2170e9]/10",
     dark:
       "bg-[#1A1A1A] text-white border border-[#2A2A2A] hover:border-[#444] hover:bg-[#222]",
   };

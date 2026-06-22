@@ -65,7 +65,7 @@ export default function Testimonials() {
               <div
                 className={`h-full bg-[#111111] border rounded-2xl p-6 flex flex-col gap-4 transition-colors ${
                   i === 1
-                    ? "border-[#C8FF00]/25 hover:border-[#C8FF00]/40"
+                    ? "border-[#2170e9]/25 hover:border-[#2170e9]/40"
                     : "border-[#2A2A2A] hover:border-[#3A3A3A]"
                 }`}
               >
@@ -76,7 +76,7 @@ export default function Testimonials() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3 pt-3 border-t border-[#2A2A2A]">
-                  <div className="w-8 h-8 rounded-full bg-[#C8FF00]/10 border border-[#C8FF00]/20 flex items-center justify-center text-[10px] font-bold text-[#C8FF00] shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-[#2170e9]/10 border border-[#2170e9]/20 flex items-center justify-center text-[10px] font-bold text-[#2170e9] shrink-0">
                     {t.name[0]}
                   </div>
                   <div>
@@ -84,7 +84,7 @@ export default function Testimonials() {
                     <p className="text-[10px] text-[#666]">{t.title}</p>
                   </div>
                   {i === 1 && (
-                    <button className="ml-auto text-[10px] font-semibold text-[#C8FF00] border border-[#C8FF00]/20 rounded-full px-3 py-1 hover:bg-[#C8FF00]/10 transition-colors whitespace-nowrap">
+                    <button className="ml-auto text-[10px] font-semibold text-[#2170e9] border border-[#2170e9]/20 rounded-full px-3 py-1 hover:bg-[#2170e9]/10 transition-colors whitespace-nowrap">
                       Visit website →
                     </button>
                   )}

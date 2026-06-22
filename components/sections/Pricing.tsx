@@ -85,13 +85,13 @@ export default function Pricing() {
               <div
                 className={`relative h-full flex flex-col rounded-2xl p-7 border transition-colors ${
                   plan.featured
-                    ? "bg-[#141414] border-[#C8FF00]/30 shadow-xl shadow-[#C8FF00]/5"
+                    ? "bg-[#141414] border-[#2170e9]/30 shadow-xl shadow-[#2170e9]/5"
                     : "bg-[#0D0D0D] border-[#2A2A2A] hover:border-[#3A3A3A]"
                 }`}
               >
                 {plan.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-[#C8FF00] text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    <span className="bg-[#2170e9] text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
                       Most popular
                     </span>
                   </div>
@@ -115,7 +115,7 @@ export default function Pricing() {
                     <div key={f} className="flex items-center gap-2.5">
                       <Check
                         size={13}
-                        className={plan.featured ? "text-[#C8FF00]" : "text-[#555]"}
+                        className={plan.featured ? "text-[#2170e9]" : "text-[#555]"}
                       />
                       <span className="text-sm text-[#AAAAAA]">{f}</span>
                     </div>

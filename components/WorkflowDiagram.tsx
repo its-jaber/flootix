@@ -4,13 +4,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import { FileText, Table2, MessageCircle, CheckCircle2 } from "lucide-react";
 
 const nodes = [
-  { id: "form", label: "Lead Form", sublabel: "Website", Icon: FileText, color: "#C8FF00" },
+  { id: "form", label: "Lead Form", sublabel: "Website", Icon: FileText, color: "#2170e9" },
   { id: "sheets", label: "Google Sheets", sublabel: "Data Capture", Icon: Table2, color: "#AAAAAA" },
   { id: "whatsapp", label: "WhatsApp", sublabel: "Auto-Reply", Icon: MessageCircle, color: "#25D366" },
-  { id: "converted", label: "Converted", sublabel: "Customer ✓", Icon: CheckCircle2, color: "#C8FF00" },
+  { id: "converted", label: "Converted", sublabel: "Customer ✓", Icon: CheckCircle2, color: "#2170e9" },
 ];
 
-function TravelingDot({ delay = 0, color = "#C8FF00" }: { delay?: number; color?: string }) {
+function TravelingDot({ delay = 0, color = "#2170e9" }: { delay?: number; color?: string }) {
   const shouldReduce = useReducedMotion();
   if (shouldReduce) return null;
   return (
@@ -79,7 +79,7 @@ export default function WorkflowDiagram() {
               <div className="flex-1 relative h-px mx-2">
                 <div className="absolute inset-0 bg-[#2A2A2A]" />
                 <div className="absolute inset-0 overflow-hidden">
-                  <TravelingDot delay={i * 0.6} color="#C8FF00" />
+                  <TravelingDot delay={i * 0.6} color="#2170e9" />
                 </div>
               </div>
             )}
