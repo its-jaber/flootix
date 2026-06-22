@@ -143,10 +143,10 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
           >
             <SectionLabel className="justify-center">What We Build</SectionLabel>
-            <h1 className="mt-4 text-5xl sm:text-6xl font-extrabold text-[#F8FAFC] tracking-tight">
+            <h1 className="mt-4 text-5xl sm:text-6xl font-extrabold text-white tracking-tight">
               Our <span className="shimmer-text">Services</span>
             </h1>
-            <p className="mt-4 text-xl text-[#64748B] max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-4 text-xl text-[#888] max-w-2xl mx-auto leading-relaxed">
               Six core systems that transform your business into an automated, lead-capturing machine.
             </p>
           </motion.div>
@@ -165,7 +165,7 @@ export default function ServicesPage() {
               <motion.div
                 key={s.title}
                 variants={item}
-                className="bg-[#111118] border border-[#1E1E2E] rounded-2xl p-8 hover:border-[#2D2D42] transition-colors group"
+                className="bg-[#111111] border border-[#2A2A2A] rounded-2xl p-8 hover:border-[#2D2D42] transition-colors group"
               >
                 <div className="grid lg:grid-cols-3 gap-8">
                   {/* Left */}
@@ -177,27 +177,27 @@ export default function ServicesPage() {
                       <s.icon size={24} style={{ color: s.color }} />
                     </div>
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-mono text-[#64748B]">0{i + 1}</span>
+                      <span className="text-xs font-mono text-[#888]">0{i + 1}</span>
                     </div>
-                    <h2 className="text-2xl font-bold text-[#F8FAFC] mb-3">{s.title}</h2>
-                    <p className="text-[#64748B] leading-relaxed text-sm">{s.description}</p>
+                    <h2 className="text-2xl font-bold text-white mb-3">{s.title}</h2>
+                    <p className="text-[#888] leading-relaxed text-sm">{s.description}</p>
 
-                    <div className="mt-5 p-4 bg-[#0A0A0F] rounded-xl border border-[#1E1E2E]">
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B] mb-2">Best For</p>
-                      <p className="text-sm text-[#94A3B8]">{s.whoFor}</p>
+                    <div className="mt-5 p-4 bg-[#0A0A0A] rounded-xl border border-[#2A2A2A]">
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">Best For</p>
+                      <p className="text-sm text-[#AAAAAA]">{s.whoFor}</p>
                     </div>
                   </div>
 
                   {/* Middle: included */}
                   <div className="lg:col-span-1">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-4">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-[#888] mb-4">
                       What&apos;s Included
                     </p>
                     <ul className="space-y-2.5">
                       {s.included.map((inc) => (
                         <li key={inc} className="flex items-center gap-2.5">
                           <CheckCircle2 size={14} style={{ color: s.color }} className="shrink-0" />
-                          <span className="text-sm text-[#94A3B8]">{inc}</span>
+                          <span className="text-sm text-[#AAAAAA]">{inc}</span>
                         </li>
                       ))}
                     </ul>
@@ -212,7 +212,7 @@ export default function ServicesPage() {
                       <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: s.color }}>
                         Outcomes
                       </p>
-                      <p className="text-sm text-[#94A3B8] leading-relaxed">{s.outcomes}</p>
+                      <p className="text-sm text-[#AAAAAA] leading-relaxed">{s.outcomes}</p>
                     </div>
 
                     <Button href="/contact" variant="ghost" className="justify-between group-hover:border-[#6366F1]/40">

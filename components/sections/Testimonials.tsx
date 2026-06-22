@@ -47,8 +47,9 @@ export default function Testimonials() {
             Loved by teams{" "}
             <em className="accent-italic">worldwide</em>
           </h2>
-          <p className="mt-4 text-[#666] text-lg max-w-xl mx-auto">
-            Flowtix acts as the automation layer between the tools your team already uses every day.
+          <p className="mt-4 text-[#888] text-lg max-w-xl mx-auto">
+            Flowtix acts as the automation layer between the tools your team
+            already uses every day.
           </p>
         </motion.div>
 
@@ -61,21 +62,29 @@ export default function Testimonials() {
         >
           {testimonials.map((t, i) => (
             <motion.div key={t.name} variants={item}>
-              <div className={`h-full bg-[#111111] border rounded-2xl p-6 flex flex-col gap-4 transition-colors ${
-                i === 1 ? "border-[#C8FF00]/20 hover:border-[#C8FF00]/30" : "border-[#1F1F1F] hover:border-[#2A2A2A]"
-              }`}>
-                <p className="text-xs font-bold text-[#555] tracking-widest">{t.brand}</p>
-                <p className="text-sm text-[#AAAAAA] leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center gap-3 pt-3 border-t border-[#1F1F1F]">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C8FF00]/20 to-[#C8FF00]/5 border border-[#C8FF00]/20 flex items-center justify-center text-[10px] font-bold text-[#C8FF00]">
+              <div
+                className={`h-full bg-[#111111] border rounded-2xl p-6 flex flex-col gap-4 transition-colors ${
+                  i === 1
+                    ? "border-[#C8FF00]/25 hover:border-[#C8FF00]/40"
+                    : "border-[#2A2A2A] hover:border-[#3A3A3A]"
+                }`}
+              >
+                <p className="text-xs font-bold text-[#888] tracking-widest">
+                  {t.brand}
+                </p>
+                <p className="text-sm text-[#AAAAAA] leading-relaxed flex-1">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-3 pt-3 border-t border-[#2A2A2A]">
+                  <div className="w-8 h-8 rounded-full bg-[#C8FF00]/10 border border-[#C8FF00]/20 flex items-center justify-center text-[10px] font-bold text-[#C8FF00] shrink-0">
                     {t.name[0]}
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-white">{t.name}</p>
-                    <p className="text-[10px] text-[#555]">{t.title}</p>
+                    <p className="text-[10px] text-[#666]">{t.title}</p>
                   </div>
                   {i === 1 && (
-                    <button className="ml-auto text-[10px] font-semibold text-[#C8FF00] border border-[#C8FF00]/20 rounded-full px-3 py-1 hover:bg-[#C8FF00]/10 transition-colors">
+                    <button className="ml-auto text-[10px] font-semibold text-[#C8FF00] border border-[#C8FF00]/20 rounded-full px-3 py-1 hover:bg-[#C8FF00]/10 transition-colors whitespace-nowrap">
                       Visit website →
                     </button>
                   )}

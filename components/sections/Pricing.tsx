@@ -36,7 +36,12 @@ const plans = [
     price: "Custom",
     period: "",
     description: "Advanced security, guaranteed uptime, and custom workflows for large teams.",
-    features: ["Custom task volume", "SSO and role permissions", "Dedicated support", "Custom API integrations"],
+    features: [
+      "Custom task volume",
+      "SSO and role permissions",
+      "Dedicated support",
+      "Custom API integrations",
+    ],
     cta: "Contact us",
     ctaVariant: "dark" as const,
     featured: false,
@@ -63,7 +68,9 @@ export default function Pricing() {
             Start small, automate{" "}
             <em className="accent-italic">more as you grow</em>
           </h2>
-          <p className="mt-4 text-[#666] text-lg">No hidden fees. Start free, scale when you&apos;re ready.</p>
+          <p className="mt-4 text-[#888] text-lg">
+            No hidden fees. Start free, scale when you&apos;re ready.
+          </p>
         </motion.div>
 
         <motion.div
@@ -75,11 +82,13 @@ export default function Pricing() {
         >
           {plans.map((plan) => (
             <motion.div key={plan.name} variants={item}>
-              <div className={`relative h-full flex flex-col rounded-2xl p-7 border transition-colors ${
-                plan.featured
-                  ? "bg-[#111111] border-[#C8FF00]/30 shadow-xl shadow-[#C8FF00]/5"
-                  : "bg-[#0D0D0D] border-[#1F1F1F] hover:border-[#2A2A2A]"
-              }`}>
+              <div
+                className={`relative h-full flex flex-col rounded-2xl p-7 border transition-colors ${
+                  plan.featured
+                    ? "bg-[#141414] border-[#C8FF00]/30 shadow-xl shadow-[#C8FF00]/5"
+                    : "bg-[#0D0D0D] border-[#2A2A2A] hover:border-[#3A3A3A]"
+                }`}
+              >
                 {plan.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="bg-[#C8FF00] text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
@@ -91,17 +100,24 @@ export default function Pricing() {
                 <div className="mb-6">
                   <p className="text-sm font-semibold text-[#AAAAAA] mb-3">{plan.name}</p>
                   <div className="flex items-end gap-1 mb-3">
-                    <span className="text-5xl font-black text-white tracking-tight">{plan.price}</span>
-                    {plan.period && <span className="text-[#555] mb-2 text-sm">{plan.period}</span>}
+                    <span className="text-5xl font-black text-white tracking-tight">
+                      {plan.price}
+                    </span>
+                    {plan.period && (
+                      <span className="text-[#666] mb-2 text-sm">{plan.period}</span>
+                    )}
                   </div>
-                  <p className="text-sm text-[#555] leading-relaxed">{plan.description}</p>
+                  <p className="text-sm text-[#888] leading-relaxed">{plan.description}</p>
                 </div>
 
                 <div className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f) => (
                     <div key={f} className="flex items-center gap-2.5">
-                      <Check size={13} className={plan.featured ? "text-[#C8FF00]" : "text-[#444]"} />
-                      <span className="text-sm text-[#888]">{f}</span>
+                      <Check
+                        size={13}
+                        className={plan.featured ? "text-[#C8FF00]" : "text-[#555]"}
+                      />
+                      <span className="text-sm text-[#AAAAAA]">{f}</span>
                     </div>
                   ))}
                 </div>

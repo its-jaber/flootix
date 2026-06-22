@@ -15,37 +15,37 @@ export default function Footer() {
               </div>
               <span className="text-base font-bold text-white">Flowtix</span>
             </Link>
-            <p className="text-sm text-[#444] leading-relaxed max-w-xs mb-6">
+            <p className="text-sm text-[#888] leading-relaxed max-w-xs mb-6">
               {SITE.tagline} — AI-powered websites and automation systems that
               work 24/7 so your business never misses a lead.
             </p>
 
             {/* Contact info */}
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <a
                 href={`mailto:${SITE.email}`}
-                className="flex items-center gap-2 text-sm text-[#555] hover:text-white transition-colors"
+                className="flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors"
               >
-                <Mail size={13} />
+                <Mail size={13} className="text-[#555]" />
                 {SITE.email}
               </a>
               <a
                 href={SITE.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-[#555] hover:text-[#25D366] transition-colors"
+                className="flex items-center gap-2 text-sm text-[#888] hover:text-[#25D366] transition-colors"
               >
-                <MessageCircle size={13} />
+                <MessageCircle size={13} className="text-[#555]" />
                 {SITE.whatsappDisplay}
               </a>
             </div>
 
-            <p className="text-xs text-[#333] mt-4">{SITE.location}</p>
+            <p className="text-xs text-[#555] mt-5">{SITE.location}</p>
           </div>
 
           {/* Nav */}
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#333] mb-4">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#666] mb-4">
               Navigation
             </p>
             <ul className="space-y-2.5">
@@ -53,7 +53,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#444] hover:text-white transition-colors"
+                    className="text-sm text-[#888] hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -64,12 +64,12 @@ export default function Footer() {
 
           {/* Industries */}
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#333] mb-4">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#666] mb-4">
               Industries
             </p>
             <ul className="space-y-2.5">
               {FOOTER_INDUSTRIES.map((ind) => (
-                <li key={ind} className="text-sm text-[#444]">
+                <li key={ind} className="text-sm text-[#888]">
                   {ind}
                 </li>
               ))}
@@ -78,10 +78,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-[#1F1F1F] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[#333]">
+          <p className="text-xs text-[#555]">
             © 2025 Flowtix. All rights reserved.
           </p>
-          <p className="text-xs text-[#333]">
+          <p className="text-xs text-[#555]">
             Built for businesses that want to grow faster.
           </p>
         </div>
