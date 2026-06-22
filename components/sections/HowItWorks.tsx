@@ -28,12 +28,15 @@ export default function HowItWorks() {
             From first click to{" "}
             <em className="accent-italic">paying customer</em> — automated
           </h2>
+          <p className="mt-4 text-[#888] text-lg max-w-xl mx-auto">
+            A proven 4-step system that transforms your business into an automated growth engine.
+          </p>
         </motion.div>
 
         {/* Desktop */}
         <div ref={ref} className="hidden lg:block">
           <div className="relative mb-14">
-            <div className="absolute top-2 inset-x-0 h-px bg-[#1F1F1F]" />
+            <div className="absolute top-2 inset-x-0 h-px bg-[#2A2A2A]" />
             {!shouldReduce && (
               <motion.div
                 className="absolute top-[3px] -translate-y-1/2 w-3 h-3 rounded-full bg-[#C8FF00] shadow-lg shadow-[#C8FF00]/30"
@@ -42,7 +45,10 @@ export default function HowItWorks() {
             )}
             <div className="relative flex justify-between">
               {STEPS.map((_, i) => (
-                <div key={i} className="w-4 h-4 rounded-full border-2 border-[#C8FF00]/40 bg-[#0A0A0A]" />
+                <div
+                  key={i}
+                  className="w-4 h-4 rounded-full border-2 border-[#C8FF00]/40 bg-[#0A0A0A]"
+                />
               ))}
             </div>
           </div>
@@ -56,9 +62,12 @@ export default function HowItWorks() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                <div className="text-6xl font-black text-[#1A1A1A] mb-3 select-none">{step.number}</div>
+                {/* Step number — visible but subtle */}
+                <div className="text-6xl font-black text-[#222] mb-3 select-none">
+                  {step.number}
+                </div>
                 <h3 className="text-base font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-sm text-[#555] leading-relaxed">{step.description}</p>
+                <p className="text-sm text-[#888] leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -76,14 +85,16 @@ export default function HowItWorks() {
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
               <div className="flex flex-col items-center">
-                <div className="w-9 h-9 rounded-full bg-[#C8FF00]/10 border border-[#C8FF00]/20 flex items-center justify-center text-xs font-bold text-[#C8FF00] shrink-0">
+                <div className="w-9 h-9 rounded-full bg-[#C8FF00]/10 border border-[#C8FF00]/25 flex items-center justify-center text-xs font-bold text-[#C8FF00] shrink-0">
                   {i + 1}
                 </div>
-                {i < STEPS.length - 1 && <div className="w-px flex-1 bg-[#1F1F1F] my-2 min-h-10" />}
+                {i < STEPS.length - 1 && (
+                  <div className="w-px flex-1 bg-[#2A2A2A] my-2 min-h-10" />
+                )}
               </div>
               <div className="pb-10">
                 <h3 className="text-sm font-bold text-white mb-1">{step.title}</h3>
-                <p className="text-sm text-[#555] leading-relaxed">{step.description}</p>
+                <p className="text-sm text-[#888] leading-relaxed">{step.description}</p>
               </div>
             </motion.div>
           ))}

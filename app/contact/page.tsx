@@ -61,7 +61,7 @@ export default function ContactPage() {
           <p className="mt-4 text-lg text-[#666] max-w-xl mx-auto">
             Tell us about your business and we&apos;ll show you how to automate your lead flow.
           </p>
-          <div className="flex items-center justify-center gap-2 mt-3 text-sm text-[#555]">
+          <div className="flex items-center justify-center gap-2 mt-3 text-sm text-[#888]">
             <Clock size={13} />
             <span>We typically respond within a few hours.</span>
           </div>
@@ -105,7 +105,7 @@ export default function ContactPage() {
               >
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#555] mb-2">
+                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
                       Your Name *
                     </label>
                     <input
@@ -114,11 +114,11 @@ export default function ContactPage() {
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Jaber Ahmed"
-                      className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl px-4 py-3 text-sm text-white placeholder-[#333] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#555] mb-2">
+                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
                       Business Name *
                     </label>
                     <input
@@ -127,21 +127,21 @@ export default function ContactPage() {
                       value={form.business}
                       onChange={(e) => setForm({ ...form, business: e.target.value })}
                       placeholder="Your Business"
-                      className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl px-4 py-3 text-sm text-white placeholder-[#333] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#555] mb-2">
+                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
                       Industry *
                     </label>
                     <select
                       required
                       value={form.industry}
                       onChange={(e) => setForm({ ...form, industry: e.target.value })}
-                      className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
                     >
                       <option value="" disabled>
                         Select industry
@@ -154,7 +154,7 @@ export default function ContactPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#555] mb-2">
+                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
                       WhatsApp Number *
                     </label>
                     <input
@@ -163,13 +163,13 @@ export default function ContactPage() {
                       value={form.whatsapp}
                       onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
                       placeholder="+880 1X XXXX XXXX"
-                      className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl px-4 py-3 text-sm text-white placeholder-[#333] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#555] mb-2">
+                  <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
                     Tell Us About Your Business
                   </label>
                   <textarea
@@ -177,7 +177,7 @@ export default function ContactPage() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="What problems are you facing? How many leads do you get per day? What does your current follow-up process look like?"
-                    className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl px-4 py-3 text-sm text-white placeholder-[#333] focus:outline-none focus:border-[#C8FF00]/40 transition-colors resize-none"
+                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#C8FF00]/40 transition-colors resize-none"
                   />
                 </div>
 
@@ -210,7 +210,7 @@ export default function ContactPage() {
                 <MessageCircle size={18} className="text-[#25D366]" />
               </div>
               <h3 className="text-sm font-bold text-white mb-1">WhatsApp</h3>
-              <p className="text-sm text-[#555] mb-2">
+              <p className="text-sm text-[#888] mb-2">
                 Message us directly — fastest response.
               </p>
               <p className="text-sm font-semibold text-[#25D366]">
@@ -227,7 +227,7 @@ export default function ContactPage() {
                 <Mail size={18} className="text-[#C8FF00]" />
               </div>
               <h3 className="text-sm font-bold text-white mb-1">Email</h3>
-              <p className="text-sm text-[#555] mb-2">
+              <p className="text-sm text-[#888] mb-2">
                 Send us a detailed message anytime.
               </p>
               <p className="text-sm font-semibold text-[#C8FF00]">
@@ -241,8 +241,8 @@ export default function ContactPage() {
                 <MapPin size={18} className="text-[#555]" />
               </div>
               <h3 className="text-sm font-bold text-white mb-1">Location</h3>
-              <p className="text-sm text-[#555]">Bangladesh</p>
-              <p className="text-xs text-[#333] mt-1">Serving clients worldwide</p>
+              <p className="text-sm text-[#888]">Bangladesh</p>
+              <p className="text-xs text-[#666] mt-1">Serving clients worldwide</p>
             </div>
 
             {/* What happens next */}
@@ -261,7 +261,7 @@ export default function ContactPage() {
                     <div className="w-5 h-5 rounded-full bg-[#C8FF00]/10 border border-[#C8FF00]/20 flex items-center justify-center text-[9px] font-bold text-[#C8FF00] shrink-0">
                       {i + 1}
                     </div>
-                    <p className="text-xs text-[#555]">{s}</p>
+                    <p className="text-xs text-[#888]">{s}</p>
                   </div>
                 ))}
               </div>

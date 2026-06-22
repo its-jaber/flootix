@@ -40,16 +40,22 @@ export default function WorkflowDiagram() {
             >
               <motion.div
                 className="relative w-12 h-12 rounded-xl flex items-center justify-center"
-                style={{ background: `${node.color}12`, border: `1px solid ${node.color}30` }}
+                style={{ background: `${node.color}15`, border: `1px solid ${node.color}35` }}
                 whileHover={{ scale: 1.08 }}
-                animate={!shouldReduce ? {
-                  boxShadow: [
-                    `0 0 0px ${node.color}00`,
-                    `0 0 16px ${node.color}30`,
-                    `0 0 0px ${node.color}00`,
-                  ],
-                } : {}}
-                transition={!shouldReduce ? { duration: 3, repeat: Infinity, delay: i * 0.7 } : {}}
+                animate={
+                  !shouldReduce
+                    ? {
+                        boxShadow: [
+                          `0 0 0px ${node.color}00`,
+                          `0 0 16px ${node.color}35`,
+                          `0 0 0px ${node.color}00`,
+                        ],
+                      }
+                    : {}
+                }
+                transition={
+                  !shouldReduce ? { duration: 3, repeat: Infinity, delay: i * 0.7 } : {}
+                }
               >
                 <node.Icon size={18} color={node.color} />
                 {!shouldReduce && (
@@ -62,8 +68,10 @@ export default function WorkflowDiagram() {
                 )}
               </motion.div>
               <div className="text-center">
-                <p className="text-[11px] font-semibold text-white whitespace-nowrap">{node.label}</p>
-                <p className="text-[9px] text-[#555] whitespace-nowrap">{node.sublabel}</p>
+                <p className="text-[11px] font-semibold text-white whitespace-nowrap">
+                  {node.label}
+                </p>
+                <p className="text-[9px] text-[#888] whitespace-nowrap">{node.sublabel}</p>
               </div>
             </motion.div>
 

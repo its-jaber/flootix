@@ -23,12 +23,10 @@ export default function Problems() {
         >
           <SectionLabel className="justify-center mb-4">The Problem</SectionLabel>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Most businesses are losing
-            <br />
-            customers{" "}
+            Most businesses are losing customers{" "}
             <em className="accent-italic">without knowing it</em>
           </h2>
-          <p className="mt-5 text-[#666] text-lg max-w-xl mx-auto">
+          <p className="mt-5 text-[#888] text-lg max-w-xl mx-auto">
             Every minute without automation is a minute your competition gains.
           </p>
         </motion.div>
@@ -44,26 +42,27 @@ export default function Problems() {
             const Icon = iconMap[p.icon];
             return (
               <motion.div key={p.title} variants={item}>
-                <div className="group h-full bg-[#111111] border border-[#1F1F1F] rounded-2xl p-6 hover:border-[#2A2A2A] transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/10 flex items-center justify-center mb-4">
+                <div className="group h-full bg-[#111111] border border-[#2A2A2A] rounded-2xl p-6 hover:border-[#3A3A3A] transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/15 flex items-center justify-center mb-4">
                     <Icon size={17} className="text-red-400" />
                   </div>
                   <h3 className="text-sm font-bold text-white mb-2">{p.title}</h3>
-                  <p className="text-sm text-[#666] leading-relaxed">{p.description}</p>
+                  <p className="text-sm text-[#888] leading-relaxed">{p.description}</p>
                 </div>
               </motion.div>
             );
           })}
 
-          {/* Bottom warning */}
+          {/* Warning banner */}
           <motion.div variants={item} className="sm:col-span-2 lg:col-span-full">
-            <div className="bg-[#111111] border border-red-500/10 rounded-2xl p-5 flex items-center gap-4">
+            <div className="bg-red-500/5 border border-red-500/15 rounded-2xl p-5 flex items-center gap-4">
               <div className="w-8 h-8 rounded-xl bg-red-500/10 flex items-center justify-center shrink-0 text-base">
                 ⚠️
               </div>
-              <p className="text-sm text-[#888]">
+              <p className="text-sm text-[#AAAAAA]">
                 <span className="text-red-400 font-semibold">The bottom line: </span>
-                Without automation, you&apos;re competing with businesses that respond instantly and never miss a lead. The gap widens every day.
+                Without automation, you&apos;re competing with businesses that respond instantly
+                and never miss a lead. The gap widens every day.
               </p>
             </div>
           </motion.div>
