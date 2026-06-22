@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
+import Logo from "./ui/Logo";
 import { NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar() {
@@ -31,14 +32,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-[#C8FF00] flex items-center justify-center">
-              <Zap size={14} className="text-black" fill="black" />
-            </div>
-            <span className="text-base font-bold text-white tracking-tight">
-              Flowtix
-            </span>
-          </Link>
+          <Logo />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
