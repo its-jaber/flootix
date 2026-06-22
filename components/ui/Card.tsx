@@ -21,7 +21,7 @@ export default function Card({ children, className = "", hover = true, accentHov
     >
       {hover && (
         <div className={`absolute inset-0 rounded-2xl border border-transparent transition-all duration-300 pointer-events-none ${
-          accentHover ? "group-hover:border-[#C8FF00]/20" : "group-hover:border-[#2A2A2A]"
+          accentHover ? "group-hover:border-[#2170e9]/20" : "group-hover:border-[#2A2A2A]"
         }`} />
       )}
       {children}

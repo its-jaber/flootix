@@ -11,7 +11,7 @@ export default function CTA() {
     <section className="py-28 relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-[#1F1F1F]" />
       <div className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 50% 100%, #C8FF00, transparent 60%)" }} />
+        style={{ background: "radial-gradient(ellipse at 50% 100%, #2170e9, transparent 60%)" }} />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div

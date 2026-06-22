@@ -53,13 +53,13 @@ export default function Services() {
               <motion.div key={featured.title} variants={item} className="lg:col-span-2">
                 <div className="group h-full bg-[#111111] border border-[#1F1F1F] rounded-2xl p-8 hover:border-[#2A2A2A] transition-colors relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-5"
-                    style={{ background: "#C8FF00", transform: "translate(30%, -30%)" }} />
+                    style={{ background: "#2170e9", transform: "translate(30%, -30%)" }} />
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-[#C8FF00]/10 border border-[#C8FF00]/20 flex items-center justify-center">
-                        <Icon size={22} className="text-[#C8FF00]" />
+                      <div className="w-12 h-12 rounded-xl bg-[#2170e9]/10 border border-[#2170e9]/20 flex items-center justify-center">
+                        <Icon size={22} className="text-[#2170e9]" />
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#C8FF00]/10 text-[#C8FF00] border border-[#C8FF00]/20">
+                      <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#2170e9]/10 text-[#2170e9] border border-[#2170e9]/20">
                         Most Popular
                       </span>
                     </div>

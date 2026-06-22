@@ -10,8 +10,8 @@
   --surface-2: #181818;
   --border: #1F1F1F;
   --border-hover: #2A2A2A;
-  --accent: #C8FF00;
-  --accent-dim: #A3CC00;
+  --accent: #2170e9;
+  --accent-dim: #3b82f6;
   --accent-2: #8B5CF6;
   --text-primary: #FFFFFF;
   --text-secondary: #AAAAAA;
@@ -51,6 +51,18 @@ body::after {
 .accent-italic {
   color: var(--accent);
   font-style: italic;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #2170e9, #60a5fa, #2170e9);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  to { background-position: 200% center; }
 }
 
 @keyframes float {
