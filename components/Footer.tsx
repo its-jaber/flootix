@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import Logo from "./ui/Logo";
 import { NAV_LINKS, FOOTER_INDUSTRIES, SITE } from "@/lib/constants";
