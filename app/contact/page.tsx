@@ -25,15 +25,27 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New Inquiry from ${form.name} — ${form.business}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nBusiness: ${form.business}\nIndustry: ${form.industry}\nWhatsApp: ${form.whatsapp}\n\nMessage:\n${form.message}`
-    );
-    window.open(`mailto:${SITE.email}?subject=${subject}&body=${body}`, "_blank");
-    setSubmitted(true);
+    setSending(true);
+    setSendError(false);
+
+    try {
+      const res = await fetch("https://its-jaber.app.n8n.cloud/webhook/flowtix-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -181,12 +193,19 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {sendError && (
+                  <p className="text-sm text-red-400 text-center -mb-1">
+                    Something went wrong. Please try again or email us directly at{" "}
+                    <a href={`mailto:${SITE.email}`} className="underline">{SITE.email}</a>
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#2170e9] text-white font-bold rounded-full hover:bg-[#3b82f6] transition-colors text-sm"
+                  disabled={sending}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#2170e9] text-white font-bold rounded-full hover:bg-[#3b82f6] transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message
-                  <Send size={14} />
+                  {sending ? "Sending…" : "Send Message"}
+                  {!sending && <Send size={14} />}
                 </button>
               </form>
             )}
