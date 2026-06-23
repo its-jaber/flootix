@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="7" fill="#001127"/>
+  <!-- F vertical bar -->
+  <rect x="8" y="7" width="3.2" height="18" rx="1" fill="white"/>
+  <!-- F top horizontal -->
+  <rect x="8" y="7" width="12.5" height="3.2" rx="1" fill="white"/>
+  <!-- F middle horizontal -->
+  <rect x="8" y="14.2" width="8.8" height="3.2" rx="1" fill="white"/>
+  <!-- Arrow shaft -->
+  <line x1="18.5" y1="23" x2="25" y2="8.5" stroke="#2170e9" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- Arrow head -->
+  <polyline points="21.5,8.5 25,8.5 25,12" fill="none" stroke="#2170e9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
