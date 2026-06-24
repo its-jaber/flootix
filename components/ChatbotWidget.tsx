@@ -45,7 +45,11 @@ export default function ChatbotWidget() {
   const [typing, setTyping] = useState(false);
   const [error, setError] = useState(false);
   const [showSuggested, setShowSuggested] = useState(true);
-  const sessionId = useRef<string>(crypto.randomUUID());
+  const sessionId = useRef<string>(
+    typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+      ? crypto.randomUUID()
+      : Math.random().toString(36).slice(2) + Date.now().toString(36)
+  );
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
