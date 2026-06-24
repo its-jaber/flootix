@@ -7,8 +7,8 @@ export default function Logo({ className = "" }: { className?: string }) {
       <Image
         src="/logo.svg"
         alt="FloowTix"
-        width={140}
-        height={50}
+        width={150}
+        height={60}
         priority
         style={{ objectFit: "contain" }}
       />
