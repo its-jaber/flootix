@@ -6,45 +6,69 @@ import { MessageCircle, Send, Clock, Mail, MapPin } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { SITE } from "@/lib/constants";
 
-const industries = [
-  "Education & Coaching",
-  "Healthcare & Clinics",
-  "Fitness & Gyms",
-  "Restaurants & F&B",
-  "Real Estate",
-  "E-commerce",
-  "Other",
-];
-
 export default function ContactPage() {
-  const [form, setForm] = useState({
-    name: "",
-    business: "",
-    industry: "",
-    whatsapp: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [sendError, setSendError] = useState(false);
+  const [name, setName] = useState("");
+  const [business, setBusiness] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [showBooking, setShowBooking] = useState(false);
+  const [preferredDate, setPreferredDate] = useState("");
+  const [preferredTime, setPreferredTime] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSending(true);
-    setSendError(false);
+    setLoading(true);
+    setSuccess("");
+    setError("");
+
+    const isBooking = showBooking && preferredDate !== "" && preferredTime !== "";
+
+    const payload = {
+      name,
+      whatsapp,
+      email,
+      business,
+      industry,
+      message,
+      form_type: isBooking ? "booking" : "inquiry",
+      preferred_date: isBooking ? preferredDate : "",
+      preferred_time: isBooking ? preferredTime : "",
+      submitted_at: new Date().toISOString(),
+    };
 
     try {
       const res = await fetch("https://its-jaber.app.n8n.cloud/webhook/flowtix-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error("Failed");
-      setSubmitted(true);
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        if (data.form_type === "booking") {
+          setSuccess("Booking request sent! Check your email for confirmation.");
+        } else {
+          setSuccess("Message received! We will contact you on WhatsApp within 1 hour.");
+        }
+        setName(""); setBusiness(""); setIndustry(""); setWhatsapp("");
+        setEmail(""); setMessage(""); setShowBooking(false);
+        setPreferredDate(""); setPreferredTime("");
+        setTimeout(() => setSuccess(""), 5000);
+      } else if (res.status === 409) {
+        setError("This time slot is already booked. Please choose a different time.");
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
     } catch {
-      setSendError(true);
+      setError("Something went wrong. Please try again.");
     } finally {
-      setSending(false);
+      setLoading(false);
     }
   };
 
@@ -87,128 +111,164 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {submitted ? (
-              <div className="bg-[#111111] border border-[#2170e9]/20 rounded-2xl p-12 text-center">
-                <div className="w-16 h-16 rounded-2xl bg-[#2170e9]/10 flex items-center justify-center mx-auto mb-4 text-3xl">
-                  ✅
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Message sent!
-                </h3>
-                <p className="text-[#666]">
-                  Your email client should have opened. We&apos;ll get back to
-                  you at <span className="text-white">{SITE.email}</span> within
-                  a few hours.
-                </p>
-                <a
-                  href={SITE.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-6 text-sm text-[#25D366] hover:underline"
-                >
-                  <MessageCircle size={14} />
-                  Or reach us instantly on WhatsApp
-                </a>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-[#111111] border border-[#1F1F1F] rounded-2xl p-8 space-y-5"
-              >
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Jaber Ahmed"
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
-                      Business Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={form.business}
-                      onChange={(e) => setForm({ ...form, business: e.target.value })}
-                      placeholder="Your Business"
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
-                      Industry *
-                    </label>
-                    <select
-                      required
-                      value={form.industry}
-                      onChange={(e) => setForm({ ...form, industry: e.target.value })}
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#2170e9]/40 transition-colors"
-                    >
-                      <option value="" disabled>
-                        Select industry
-                      </option>
-                      {industries.map((ind) => (
-                        <option key={ind} value={ind}>
-                          {ind}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
-                      WhatsApp Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={form.whatsapp}
-                      onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
-                      placeholder="+880 1X XXXX XXXX"
-                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
-                    />
-                  </div>
-                </div>
-
+            <form
+              onSubmit={handleSubmit}
+              className="bg-[#111111] border border-[#1F1F1F] rounded-2xl p-8 space-y-5"
+            >
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
-                    Tell Us About Your Business
+                    Your Name *
                   </label>
-                  <textarea
-                    rows={5}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="What problems are you facing? How many leads do you get per day? What does your current follow-up process look like?"
-                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors resize-none"
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Jaber Ahmed"
+                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
                   />
                 </div>
+                <div>
+                  <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
+                    Business Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={business}
+                    onChange={(e) => setBusiness(e.target.value)}
+                    placeholder="Your Business"
+                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
+                  />
+                </div>
+              </div>
 
-                {sendError && (
-                  <p className="text-sm text-red-400 text-center -mb-1">
-                    Something went wrong. Please try again or email us directly at{" "}
-                    <a href={`mailto:${SITE.email}`} className="underline">{SITE.email}</a>
-                  </p>
-                )}
-                <button
-                  type="submit"
-                  disabled={sending}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#2170e9] text-white font-bold rounded-full hover:bg-[#3b82f6] transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {sending ? "Sending…" : "Send Message"}
-                  {!sending && <Send size={14} />}
-                </button>
-              </form>
-            )}
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
+                    Industry *
+                  </label>
+                  <select
+                    required
+                    value={industry}
+                    onChange={(e) => setIndustry(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#2170e9]/40 transition-colors"
+                  >
+                    <option value="">Select industry</option>
+                    <option value="Coaching Center">Coaching Center</option>
+                    <option value="IELTS Institute">IELTS Institute</option>
+                    <option value="Training Institute">Training Institute</option>
+                    <option value="Gym / Fitness">Gym / Fitness</option>
+                    <option value="Medical / Clinic">Medical / Clinic</option>
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Real Estate">Real Estate</option>
+                    <option value="Other Local Business">Other Local Business</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
+                    WhatsApp Number *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={whatsapp}
+                    onChange={(e) => setWhatsapp(e.target.value)}
+                    placeholder="+880 1X XXXX XXXX"
+                    className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
+                  Tell Us About Your Business
+                </label>
+                <textarea
+                  rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="What problems are you facing? How many leads do you get per day? What does your current follow-up process look like?"
+                  className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors resize-none"
+                />
+              </div>
+
+              {/* Demo booking checkbox */}
+              <div>
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={showBooking}
+                    onChange={(e) => setShowBooking(e.target.checked)}
+                    className="w-4 h-4 rounded border-[#2A2A2A] bg-[#0A0A0A] accent-[#2170e9] cursor-pointer"
+                  />
+                  <span className="text-sm text-[#AAAAAA]">
+                    📅 I want to schedule a free 30-min demo call (optional)
+                  </span>
+                </label>
+              </div>
+
+              {showBooking && (
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
+                      Preferred Date
+                    </label>
+                    <input
+                      type="date"
+                      required={showBooking}
+                      value={preferredDate}
+                      onChange={(e) => setPreferredDate(e.target.value)}
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-semibold uppercase tracking-widest text-[#888] mb-2">
+                      Preferred Time
+                    </label>
+                    <input
+                      type="time"
+                      required={showBooking}
+                      value={preferredTime}
+                      onChange={(e) => setPreferredTime(e.target.value)}
+                      className="w-full bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#555] focus:outline-none focus:border-[#2170e9]/40 transition-colors"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {success && (
+                <p className="text-sm text-green-400 text-center">{success}</p>
+              )}
+              {error && (
+                <p className="text-sm text-red-400 text-center">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#2170e9] text-white font-bold rounded-full hover:bg-[#3b82f6] transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? "Sending…" : "Send Message"}
+                {!loading && <Send size={14} />}
+              </button>
+            </form>
           </motion.div>
 
           {/* Sidebar */}
