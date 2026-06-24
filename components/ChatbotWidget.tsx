@@ -129,20 +129,6 @@ export default function ChatbotWidget() {
 
   return (
     <>
-      <style>{`
-        @keyframes chatBounce {
-          0%, 80%, 100% { transform: translateY(0); }
-          40% { transform: translateY(-6px); }
-        }
-        @keyframes chatSlideUp {
-          from { opacity: 0; transform: translateY(16px) scale(0.97); }
-          to   { opacity: 1; transform: translateY(0)   scale(1);    }
-        }
-        .chat-widget-open {
-          animation: chatSlideUp 0.22s ease forwards;
-        }
-      `}</style>
-
       {/* Floating button */}
       <button
         onClick={() => setOpen((o) => !o)}
