@@ -14,7 +14,13 @@ const SUGGESTED = [
   "Book a free demo",
 ];
 
-type Message = { role: "user" | "assistant"; content: string };
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+  booking_confirmed?: boolean;
+  booking_id?: string;
+  slot_conflict?: boolean;
+};
 
 function TypingIndicator() {
   return (
@@ -67,19 +73,17 @@ export default function ChatbotWidget() {
     const trimmed = text.trim();
     if (!trimmed || typing) return;
 
+    // Capture history BEFORE adding current user message
+    const history = messages.map((m) => ({ role: m.role, content: m.content }));
+
     const userMsg: Message = { role: "user", content: trimmed };
-    setMessages((prev) => {
-      const updated = [...prev, userMsg];
-      return updated;
-    });
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setShowSuggested(false);
     setTyping(true);
     setError(false);
 
     try {
-      const history = messages.map((m) => ({ role: m.role, content: m.content }));
-
       const res = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -96,10 +100,16 @@ export default function ChatbotWidget() {
       const data = await res.json();
       const reply: string = data.reply ?? "Sorry, I couldn't understand that.";
       const delay: number = data.typingDelay ?? 1500;
+      const booking_confirmed: boolean = data.booking_confirmed === true;
+      const booking_id: string = data.booking_id ?? "";
+      const slot_conflict: boolean = data.slot_conflict === true;
 
       await new Promise((r) => setTimeout(r, delay));
       setTyping(false);
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: reply, booking_confirmed, booking_id, slot_conflict },
+      ]);
     } catch {
       setTyping(false);
       setError(true);
@@ -201,21 +211,44 @@ export default function ChatbotWidget() {
 
             {/* Message bubbles */}
             {messages.map((m, i) => (
-              <div key={i} className={`flex items-end gap-2 mb-3 ${m.role === "user" ? "flex-row-reverse" : ""}`}>
-                {m.role === "assistant" && (
-                  <div className="w-7 h-7 rounded-full bg-[#7c3aed]/20 border border-[#7c3aed]/30 flex items-center justify-center shrink-0 text-[10px]">
-                    🤖
+              <div key={i}>
+                <div className={`flex items-end gap-2 mb-1 ${m.role === "user" ? "flex-row-reverse" : ""}`}>
+                  {m.role === "assistant" && (
+                    <div className="w-7 h-7 rounded-full bg-[#7c3aed]/20 border border-[#7c3aed]/30 flex items-center justify-center shrink-0 text-[10px]">
+                      🤖
+                    </div>
+                  )}
+                  <div
+                    className={`max-w-[78%] px-3.5 py-2.5 text-sm leading-relaxed rounded-2xl ${
+                      m.role === "user"
+                        ? "bg-[#7c3aed] text-white rounded-br-sm"
+                        : "bg-[#1a1a2e] border border-[#2a2a4a] text-[#ddd] rounded-bl-sm"
+                    }`}
+                    style={
+                      m.role === "assistant" && m.slot_conflict
+                        ? { borderLeft: "3px solid #F59E0B" }
+                        : undefined
+                    }
+                  >
+                    {m.content}
+                  </div>
+                </div>
+
+                {/* Booking confirmation card */}
+                {m.role === "assistant" && m.booking_confirmed && (
+                  <div
+                    className="ml-9 mb-3 px-3.5 py-3 rounded-xl text-sm"
+                    style={{
+                      background: "rgba(34,197,94,0.08)",
+                      border: "1px solid rgba(34,197,94,0.2)",
+                      animation: "chatSlideUp 0.22s ease forwards",
+                    }}
+                  >
+                    <p className="font-semibold" style={{ color: "#22c55e" }}>✅ Booking Confirmed</p>
+                    <p className="mt-1" style={{ color: "#888" }}>Booking ID: {m.booking_id}</p>
+                    <p className="mt-0.5" style={{ color: "#888" }}>Jaber will WhatsApp you before the call.</p>
                   </div>
                 )}
-                <div
-                  className={`max-w-[78%] px-3.5 py-2.5 text-sm leading-relaxed rounded-2xl ${
-                    m.role === "user"
-                      ? "bg-[#7c3aed] text-white rounded-br-sm"
-                      : "bg-[#1a1a2e] border border-[#2a2a4a] text-[#ddd] rounded-bl-sm"
-                  }`}
-                >
-                  {m.content}
-                </div>
               </div>
             ))}
 
