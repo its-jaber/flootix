@@ -10,6 +10,7 @@ export default function Logo({ className = "" }: { className?: string }) {
         width={150}
         height={60}
         priority
+        unoptimized
         style={{ objectFit: "contain" }}
       />
     </Link>
