@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap, Dumbbell, Stethoscope, UtensilsCrossed } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
@@ -70,14 +70,16 @@ export default function DemoProjects() {
                       {project.title}
                     </h3>
                   </div>
-                  <div className="w-9 h-9 rounded-xl bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-base shrink-0">
-                    {project.industry === "Education"
-                      ? "🎓"
-                      : project.industry === "Fitness"
-                      ? "💪"
-                      : project.industry === "Healthcare"
-                      ? "🏥"
-                      : "🍽️"}
+                  <div className="w-9 h-9 rounded-xl bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center shrink-0">
+                    {project.industry === "Education" ? (
+                      <GraduationCap size={16} className="text-[#6366F1]" />
+                    ) : project.industry === "Fitness" ? (
+                      <Dumbbell size={16} className="text-[#10B981]" />
+                    ) : project.industry === "Healthcare" ? (
+                      <Stethoscope size={16} className="text-[#8B5CF6]" />
+                    ) : (
+                      <UtensilsCrossed size={16} className="text-[#F59E0B]" />
+                    )}
                   </div>
                 </div>
 
