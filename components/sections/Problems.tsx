@@ -67,6 +67,21 @@ export default function Problems() {
             </div>
           </motion.div>
         </motion.div>
+
+        <motion.div
+          className="text-center mt-10"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#2170e9] hover:text-[#3b82f6] transition-colors"
+          >
+            See How We Fix This →
+          </a>
+        </motion.div>
       </div>
     </section>
   );

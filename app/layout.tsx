@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/ChatbotWidget";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Flowtix — AI Growth Systems Agency | Automate. Capture. Grow.",
@@ -28,6 +29,7 @@ export default function RootLayout({
         <Navbar />
         <main className="relative z-10">{children}</main>
         <Footer />
+        <WhatsAppButton />
         <ChatbotWidget />
       </body>
     </html>

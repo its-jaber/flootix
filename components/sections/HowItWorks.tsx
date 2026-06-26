@@ -99,6 +99,21 @@ export default function HowItWorks() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="text-center mt-14"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#2170e9] text-white text-sm font-semibold rounded-full hover:bg-[#3b82f6] transition-colors"
+          >
+            Start With a Free Audit
+          </a>
+        </motion.div>
       </div>
     </section>
   );

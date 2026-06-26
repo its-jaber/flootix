@@ -23,23 +23,21 @@ export default function CTA() {
           <SectionLabel className="justify-center mb-6">Free Audit — No Commitment</SectionLabel>
 
           <h2 className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            Automate the work{" "}
-            <em className="accent-italic">
-              that slows your team down
-            </em>
+            Ready to Stop{" "}
+            <em className="accent-italic">Losing Leads?</em>
           </h2>
 
           <p className="mt-6 text-lg text-[#666] leading-relaxed max-w-2xl mx-auto">
-            Turn repetitive operations into reliable systems with a clean, no-code automation
-            platform designed for modern businesses.
+            Get a free audit of your current lead process. We&apos;ll show you exactly where
+            you&apos;re losing customers and how to fix it. No commitment required.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/contact" size="lg">
-              Create your workflow
+              Book Your Free Audit
             </Button>
             <Button href="/services" variant="ghost" size="lg">
-              Explore features
+              View Our Services
             </Button>
           </div>
 

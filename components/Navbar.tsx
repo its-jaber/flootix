@@ -49,11 +49,8 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/contact" className="text-sm text-[#AAAAAA] hover:text-white transition-colors">
-              Sign in
-            </Link>
             <Button href="/contact" size="sm">
-              Get started
+              Book Free Audit
             </Button>
           </div>
 

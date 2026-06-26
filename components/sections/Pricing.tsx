@@ -7,43 +7,46 @@ import Button from "@/components/ui/Button";
 
 const plans = [
   {
-    name: "Free",
-    price: "$0",
-    period: "/month",
-    description: "Perfect for trying basic automations and connecting your first tools.",
-    features: ["3 active workflows", "500 tasks per month", "Basic app integrations"],
-    cta: "Get Started",
-    ctaVariant: "dark" as const,
+    name: "Starter",
+    price: "10,000 – 15,000",
+    bestFor: "Small businesses getting started",
+    features: [
+      "Professional landing page",
+      "Lead capture form",
+      "WhatsApp contact button",
+      "Mobile responsive design",
+      "1 revision round",
+    ],
     featured: false,
   },
   {
-    name: "Pro",
-    price: "$29",
-    period: "/month",
-    description: "Unlock advanced routing, AI agents, monitoring, and higher automation volume.",
+    name: "Growth",
+    price: "20,000 – 30,000",
+    bestFor: "Coaching centers, gyms, clinics",
     features: [
-      "Unlimited active workflows",
-      "25,000 tasks per month",
-      "AI actions and approvals",
-      "Live workflow analytics",
+      "Full website (up to 5 pages)",
+      "Lead generation form + tracking",
+      "WhatsApp automation",
+      "Messenger automation",
+      "Google Sheets lead dashboard",
+      "Email notifications",
+      "2 revision rounds",
     ],
-    cta: "Start pro trial",
-    ctaVariant: "primary" as const,
     featured: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "Advanced security, guaranteed uptime, and custom workflows for large teams.",
+    name: "Premium",
+    price: "35,000 – 50,000",
+    bestFor: "Businesses that want full automation",
     features: [
-      "Custom task volume",
-      "SSO and role permissions",
-      "Dedicated support",
-      "Custom API integrations",
+      "Everything in Growth",
+      "CRM & lead management system",
+      "Automated follow-up sequences",
+      "Lead scoring & routing",
+      "n8n workflow automation",
+      "Monthly check-in support",
+      "3 revision rounds",
     ],
-    cta: "Contact us",
-    ctaVariant: "dark" as const,
     featured: false,
   },
 ];
@@ -58,23 +61,23 @@ export default function Pricing() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <SectionLabel className="justify-center mb-4">Pricing</SectionLabel>
+          <SectionLabel className="justify-center mb-4">Investment</SectionLabel>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Start small, automate{" "}
-            <em className="accent-italic">more as you grow</em>
+            Transparent Pricing.{" "}
+            <em className="accent-italic">No Hidden Fees.</em>
           </h2>
           <p className="mt-4 text-[#888] text-lg">
-            No hidden fees. Start free, scale when you&apos;re ready.
+            Every package is a one-time project fee — not a subscription.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -92,43 +95,57 @@ export default function Pricing() {
                 {plan.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="bg-[#2170e9] text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
-                      Most popular
+                      Most Popular
                     </span>
                   </div>
                 )}
 
                 <div className="mb-6">
                   <p className="text-sm font-semibold text-[#AAAAAA] mb-3">{plan.name}</p>
-                  <div className="flex items-end gap-1 mb-3">
-                    <span className="text-5xl font-black text-white tracking-tight">
-                      {plan.price}
+                  <div className="flex items-end gap-1.5 mb-1">
+                    <span className="text-3xl font-black text-white tracking-tight">
+                      ৳{plan.price}
                     </span>
-                    {plan.period && (
-                      <span className="text-[#666] mb-2 text-sm">{plan.period}</span>
-                    )}
                   </div>
-                  <p className="text-sm text-[#888] leading-relaxed">{plan.description}</p>
+                  <p className="text-xs text-[#555] mb-3">One-time project fee</p>
+                  <p className="text-sm text-[#888] leading-relaxed">
+                    Best for: {plan.bestFor}
+                  </p>
                 </div>
 
                 <div className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f) => (
-                    <div key={f} className="flex items-center gap-2.5">
+                    <div key={f} className="flex items-start gap-2.5">
                       <Check
                         size={13}
-                        className={plan.featured ? "text-[#2170e9]" : "text-[#555]"}
+                        className={`mt-0.5 shrink-0 ${plan.featured ? "text-[#2170e9]" : "text-[#555]"}`}
                       />
                       <span className="text-sm text-[#AAAAAA]">{f}</span>
                     </div>
                   ))}
                 </div>
 
-                <Button href="/contact" variant={plan.ctaVariant} className="w-full justify-center">
-                  {plan.cta}
+                <Button href="/contact" variant={plan.featured ? "primary" : "dark"} className="w-full justify-center">
+                  Book Free Audit
                 </Button>
               </div>
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.p
+          className="text-center text-sm text-[#555] mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          Not sure which package fits?{" "}
+          <a href="/contact" className="text-[#2170e9] hover:underline">
+            Book a free audit
+          </a>{" "}
+          and we&apos;ll recommend the right one.
+        </motion.p>
       </div>
     </section>
   );
