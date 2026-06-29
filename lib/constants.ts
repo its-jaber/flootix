@@ -6,8 +6,8 @@ export const SITE = {
   founder: "Jaber Ahmed",
   founderTitle: "AI Growth Systems Specialist",
   founderBio:
-    "I'm Jaber — I help businesses in Bangladesh and beyond stop losing customers through missed inquiries and slow follow-up. I build AI-powered websites and automation systems that work 24/7 so your business never misses an opportunity.",
-  location: "Bangladesh",
+    "I'm Jaber — I help service businesses globally stop losing customers through missed inquiries and slow follow-up. I build AI-powered websites and automation systems that work 24/7 so your business never misses an opportunity.",
+  location: "Remote · Worldwide",
   whatsapp: "https://wa.me/8801303545774",
   whatsappDisplay: "+880 1303 545774",
   email: "contact@floowtix.com",

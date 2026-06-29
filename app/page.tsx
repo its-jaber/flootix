@@ -8,6 +8,7 @@ import DemoProjects from "@/components/sections/DemoProjects";
 import Testimonials from "@/components/sections/Testimonials";
 import Pricing from "@/components/sections/Pricing";
 import Results from "@/components/sections/Results";
+import Guarantee from "@/components/sections/Guarantee";
 import About from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
 
@@ -27,6 +28,7 @@ export default function Home() {
       <DemoProjects />
       <Testimonials />
       <Pricing />
+      <Guarantee />
       <Results />
       <About />
       <FAQ />

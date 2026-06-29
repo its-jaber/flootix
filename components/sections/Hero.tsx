@@ -75,7 +75,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
         >
-          Serving coaching centers, gyms, clinics &amp; local businesses across Bangladesh
+          Serving dental clinics, gyms, immigration agencies, and coaching centers — worldwide
         </motion.p>
 
         <motion.p
@@ -102,6 +102,21 @@ export default function Hero() {
             <ChevronRight size={14} />
             View Demo Projects
           </Button>
+        </motion.div>
+
+        <motion.div
+          className="mt-5 flex justify-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
+        >
+          <span
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[#22c55e]/30 text-[#22c55e]"
+            style={{ background: "rgba(34,197,94,0.08)" }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] inline-block" />
+            Live in 14 days — or full refund
+          </span>
         </motion.div>
 
         {/* Workflow diagram card */}

@@ -46,9 +46,9 @@ export default function About() {
 
             <div className="grid grid-cols-3 gap-3 w-full">
               {[
-                { v: "50+", l: "Automations Built" },
+                { v: "14d", l: "Delivery Guarantee" },
                 { v: "24/7", l: "Systems Running" },
-                { v: "BD", l: "Based In" },
+                { v: "Global", l: "Remote Delivery" },
               ].map((s) => (
                 <div key={s.l} className="text-center bg-[#111111] border border-[#1F1F1F] rounded-xl p-3">
                   <p className="text-xl font-black text-white">{s.v}</p>

@@ -75,7 +75,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-[#1F1F1F] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[#555]">
-            © 2025 FlowTix. All rights reserved.
+            © 2026 Flowtix. All rights reserved.
           </p>
           <p className="text-xs text-[#555]">
             Built for businesses that want to grow faster.

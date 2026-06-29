@@ -8,12 +8,14 @@ import Button from "@/components/ui/Button";
 const plans = [
   {
     name: "Starter",
-    price: "10,000 – 15,000",
+    setup: "$249",
+    monthly: "$349",
+    commitment: "3-month minimum commitment",
     bestFor: "Small businesses getting started",
     features: [
       "Professional landing page",
       "Lead capture form",
-      "WhatsApp contact button",
+      "WhatsApp/SMS contact button",
       "Mobile responsive design",
       "1 revision round",
     ],
@@ -21,22 +23,27 @@ const plans = [
   },
   {
     name: "Growth",
-    price: "20,000 – 30,000",
+    setup: "$499",
+    monthly: "$699",
+    commitment: "3-month minimum commitment",
     bestFor: "Coaching centers, gyms, clinics",
     features: [
       "Full website (up to 5 pages)",
       "Lead generation form + tracking",
-      "WhatsApp automation",
+      "WhatsApp/SMS automation",
       "Messenger automation",
       "Google Sheets lead dashboard",
       "Email notifications",
+      "Monthly performance report",
       "2 revision rounds",
     ],
     featured: true,
   },
   {
     name: "Premium",
-    price: "35,000 – 50,000",
+    setup: "$899",
+    monthly: "$1,199",
+    commitment: "6-month minimum commitment",
     bestFor: "Businesses that want full automation",
     features: [
       "Everything in Growth",
@@ -44,7 +51,8 @@ const plans = [
       "Automated follow-up sequences",
       "Lead scoring & routing",
       "n8n workflow automation",
-      "Monthly check-in support",
+      "Monthly strategy call",
+      "Priority support",
       "3 revision rounds",
     ],
     featured: false,
@@ -72,7 +80,7 @@ export default function Pricing() {
             <em className="accent-italic">No Hidden Fees.</em>
           </h2>
           <p className="mt-4 text-[#888] text-lg">
-            Every package is a one-time project fee — not a subscription.
+            One setup fee. Then a monthly management fee. Transparent pricing, no surprises.
           </p>
         </motion.div>
 
@@ -102,12 +110,13 @@ export default function Pricing() {
 
                 <div className="mb-6">
                   <p className="text-sm font-semibold text-[#AAAAAA] mb-3">{plan.name}</p>
-                  <div className="flex items-end gap-1.5 mb-1">
-                    <span className="text-3xl font-black text-white tracking-tight">
-                      ৳{plan.price}
-                    </span>
+                  <div className="mb-1">
+                    <span className="text-3xl font-black text-white tracking-tight">{plan.setup} setup</span>
                   </div>
-                  <p className="text-xs text-[#555] mb-3">One-time project fee</p>
+                  <div className="mb-1">
+                    <span className="text-xl font-bold text-[#2170e9]">+ {plan.monthly}/month</span>
+                  </div>
+                  <p className="text-xs text-[#555] mb-3">{plan.commitment}</p>
                   <p className="text-sm text-[#888] leading-relaxed">
                     Best for: {plan.bestFor}
                   </p>
@@ -144,7 +153,7 @@ export default function Pricing() {
           <a href="/contact" className="text-[#2170e9] hover:underline">
             Book a free audit
           </a>{" "}
-          and we&apos;ll recommend the right one.
+          — we&apos;ll recommend the right one. No commitment required.
         </motion.p>
       </div>
     </section>

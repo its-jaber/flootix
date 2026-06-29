@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Wrench, Clock, MapPin } from "lucide-react";
+import { Clock, CalendarCheck, Globe } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 const stats = [
   {
-    icon: Wrench,
-    value: "50+",
-    label: "Automations Built",
-    description: "Systems designed and deployed",
+    icon: CalendarCheck,
+    value: "14 Days",
+    label: "Delivery Guarantee",
+    description: "System live in 14 days or full refund",
   },
   {
     icon: Clock,
@@ -18,10 +18,10 @@ const stats = [
     description: "Every system works around the clock",
   },
   {
-    icon: MapPin,
-    value: "BD",
-    label: "Based in Bangladesh",
-    description: "Built for local businesses, priced fairly",
+    icon: Globe,
+    value: "Global",
+    label: "Remote Delivery",
+    description: "Serving clients worldwide",
   },
 ];
 
