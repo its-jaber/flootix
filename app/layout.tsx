@@ -8,7 +8,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export const metadata: Metadata = {
   title: "Flowtix — AI Growth Systems Agency | Automate. Capture. Grow.",
   description:
-    "Flowtix builds AI Growth Systems for service businesses — dental clinics, gyms, immigration agencies, and coaching centers. We automate lead capture, appointment booking, and follow-up. Live in 14 days or full refund.",
+    "Flowtix builds AI Growth Systems for service businesses worldwide — so they never miss a lead, never lose a booking, and never chase a follow-up manually again. Live in 14 days.",
   keywords: "AI automation, lead generation, WhatsApp automation, business automation, n8n, AI growth systems, appointment automation, service business automation",
   openGraph: {
     title: "Flowtix — AI Growth Systems Agency",
