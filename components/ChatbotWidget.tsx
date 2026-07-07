@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { X, Send, MessageSquare, ChevronDown } from "lucide-react";
 
-const WEBHOOK_URL = "https://17525.run.itnut.net/webhook-test/flowtix-chat";
+const WEBHOOK_URL = "https://17525.run.itnut.net/webhook/flowtix-chat";
 
 const SUGGESTED = [
   "How does it work?",
