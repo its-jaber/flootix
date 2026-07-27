@@ -1,36 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CalendarCheck, Clock, Globe } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 
-const testimonials = [
+const stats = [
   {
-    brand: "▲ Vercel",
-    quote:
-      "Flowtix replaced three separate tools we were using. Our ops team went from spending 4 hours a week on manual work to nearly zero.",
-    name: "Aiko Ilan",
-    title: "Head of Operations, Vercel",
+    icon: CalendarCheck,
+    value: "14 Days",
+    label: "Delivery Guarantee",
+    detail: "System live in 14 days or full refund",
   },
   {
-    brand: "◈ Linear",
-    quote:
-      "I set up our entire customer onboarding flow in under an hour. The visual editor just clicks — anyone on the team can edit it.",
-    name: "Marcus Klein",
-    title: "Product Manager, Linear",
+    icon: Clock,
+    value: "24/7",
+    label: "Systems Running",
+    detail: "Every system works around the clock",
   },
   {
-    brand: "⬡ Framer",
-    quote:
-      "The AI classification was a game changer. Our support tickets are now automatically routed before anyone even sees them.",
-    name: "Sara Patel",
-    title: "CTO, Framer",
+    icon: Globe,
+    value: "Global",
+    label: "Remote Delivery",
+    detail: "Serving clients worldwide",
   },
 ];
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
-export default function Testimonials() {
+export default function WhyFlowtix() {
   return (
     <section className="py-28 relative">
       <div className="absolute top-0 inset-x-0 h-px bg-[#1F1F1F]" />
@@ -42,14 +40,13 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <SectionLabel className="justify-center mb-4">Testimonials</SectionLabel>
+          <SectionLabel className="justify-center mb-4">Why Flowtix</SectionLabel>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Loved by teams{" "}
-            <em className="accent-italic">worldwide</em>
+            Built for Businesses That{" "}
+            <em className="accent-italic">Can&apos;t Afford to Miss a Lead</em>
           </h2>
           <p className="mt-4 text-[#888] text-lg max-w-xl mx-auto">
-            Flowtix acts as the automation layer between the tools your team
-            already uses every day.
+            Every system we build is fast, reliable, and working for your business around the clock.
           </p>
         </motion.div>
 
@@ -60,38 +57,35 @@ export default function Testimonials() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {testimonials.map((t, i) => (
-            <motion.div key={t.name} variants={item}>
-              <div
-                className={`h-full bg-[#111111] border rounded-2xl p-6 flex flex-col gap-4 transition-colors ${
-                  i === 1
-                    ? "border-[#2170e9]/25 hover:border-[#2170e9]/40"
-                    : "border-[#2A2A2A] hover:border-[#3A3A3A]"
-                }`}
-              >
-                <p className="text-xs font-bold text-[#888] tracking-widest">
-                  {t.brand}
-                </p>
-                <p className="text-sm text-[#AAAAAA] leading-relaxed flex-1">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="flex items-center gap-3 pt-3 border-t border-[#2A2A2A]">
-                  <div className="w-8 h-8 rounded-full bg-[#2170e9]/10 border border-[#2170e9]/20 flex items-center justify-center text-[10px] font-bold text-[#2170e9] shrink-0">
-                    {t.name[0]}
+          {stats.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div key={s.label} variants={item}>
+                <div
+                  className={`h-full flex flex-col items-center text-center rounded-2xl p-8 border transition-colors ${
+                    i === 1
+                      ? "bg-[#141414] border-[#2170e9]/30 shadow-xl shadow-[#2170e9]/5"
+                      : "bg-[#0D0D0D] border-[#2A2A2A] hover:border-[#3A3A3A]"
+                  }`}
+                >
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${
+                      i === 1
+                        ? "bg-[#2170e9]/10 border border-[#2170e9]/20"
+                        : "bg-[#1A1A1A] border border-[#2A2A2A]"
+                    }`}
+                  >
+                    <Icon size={20} className={i === 1 ? "text-[#2170e9]" : "text-[#888]"} />
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold text-white">{t.name}</p>
-                    <p className="text-[10px] text-[#666]">{t.title}</p>
-                  </div>
-                  {i === 1 && (
-                    <button className="ml-auto text-[10px] font-semibold text-[#2170e9] border border-[#2170e9]/20 rounded-full px-3 py-1 hover:bg-[#2170e9]/10 transition-colors whitespace-nowrap">
-                      Visit website →
-                    </button>
-                  )}
+                  <p className="text-4xl font-black text-white tracking-tight mb-1">{s.value}</p>
+                  <p className={`text-sm font-semibold mb-2 ${i === 1 ? "text-[#2170e9]" : "text-[#AAAAAA]"}`}>
+                    {s.label}
+                  </p>
+                  <p className="text-xs text-[#666] leading-relaxed">{s.detail}</p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

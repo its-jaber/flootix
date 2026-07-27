@@ -7,42 +7,59 @@ import Button from "@/components/ui/Button";
 
 const plans = [
   {
-    name: "Free",
-    price: "$0",
-    period: "/month",
-    description: "Perfect for trying basic automations and connecting your first tools.",
-    features: ["3 active workflows", "500 tasks per month", "Basic app integrations"],
+    name: "Starter",
+    setup: "$249",
+    monthly: "$349",
+    commitment: "3-month minimum commitment",
+    description: "Best for small businesses getting started with automation.",
+    features: [
+      "Professional landing page",
+      "Lead capture form",
+      "WhatsApp/SMS contact button",
+      "Mobile responsive design",
+      "1 revision round",
+    ],
     cta: "Get Started",
     ctaVariant: "dark" as const,
     featured: false,
   },
   {
-    name: "Pro",
-    price: "$29",
-    period: "/month",
-    description: "Unlock advanced routing, AI agents, monitoring, and higher automation volume.",
+    name: "Growth",
+    setup: "$499",
+    monthly: "$699",
+    commitment: "3-month minimum commitment",
+    description: "Best for coaching centers, gyms, and clinics.",
     features: [
-      "Unlimited active workflows",
-      "25,000 tasks per month",
-      "AI actions and approvals",
-      "Live workflow analytics",
+      "Full website (up to 5 pages)",
+      "Lead generation form + tracking",
+      "WhatsApp/SMS automation",
+      "Messenger automation",
+      "Google Sheets lead dashboard",
+      "Email notifications",
+      "Monthly performance report",
+      "2 revision rounds",
     ],
-    cta: "Start pro trial",
+    cta: "Book Free Audit",
     ctaVariant: "primary" as const,
     featured: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "Advanced security, guaranteed uptime, and custom workflows for large teams.",
+    name: "Premium",
+    setup: "$899",
+    monthly: "$1,199",
+    commitment: "6-month minimum commitment",
+    description: "Best for businesses that want full automation.",
     features: [
-      "Custom task volume",
-      "SSO and role permissions",
-      "Dedicated support",
-      "Custom API integrations",
+      "Everything in Growth",
+      "CRM & lead management system",
+      "Automated follow-up sequences",
+      "Lead scoring & routing",
+      "n8n workflow automation",
+      "Monthly strategy call",
+      "Priority support",
+      "3 revision rounds",
     ],
-    cta: "Contact us",
+    cta: "Book Free Audit",
     ctaVariant: "dark" as const,
     featured: false,
   },
@@ -63,13 +80,13 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <SectionLabel className="justify-center mb-4">Pricing</SectionLabel>
+          <SectionLabel className="justify-center mb-4">Investment</SectionLabel>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Start small, automate{" "}
-            <em className="accent-italic">more as you grow</em>
+            Transparent Pricing.{" "}
+            <em className="accent-italic">No Hidden Fees.</em>
           </h2>
           <p className="mt-4 text-[#888] text-lg">
-            No hidden fees. Start free, scale when you&apos;re ready.
+            One setup fee. Then a monthly management fee. No surprises.
           </p>
         </motion.div>
 
@@ -92,21 +109,28 @@ export default function Pricing() {
                 {plan.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="bg-[#2170e9] text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
-                      Most popular
+                      Most Popular
                     </span>
                   </div>
                 )}
 
                 <div className="mb-6">
                   <p className="text-sm font-semibold text-[#AAAAAA] mb-3">{plan.name}</p>
-                  <div className="flex items-end gap-1 mb-3">
-                    <span className="text-5xl font-black text-white tracking-tight">
-                      {plan.price}
-                    </span>
-                    {plan.period && (
-                      <span className="text-[#666] mb-2 text-sm">{plan.period}</span>
-                    )}
+                  <div className="mb-2">
+                    <div className="flex items-end gap-1">
+                      <span className="text-4xl font-black text-white tracking-tight">
+                        {plan.setup}
+                      </span>
+                      <span className="text-[#666] mb-1.5 text-sm">setup</span>
+                    </div>
+                    <div className="flex items-end gap-1 mt-0.5">
+                      <span className="text-2xl font-bold text-[#AAAAAA] tracking-tight">
+                        {plan.monthly}
+                      </span>
+                      <span className="text-[#555] mb-0.5 text-sm">/month</span>
+                    </div>
                   </div>
+                  <p className="text-[11px] text-[#555] mb-3">{plan.commitment}</p>
                   <p className="text-sm text-[#888] leading-relaxed">{plan.description}</p>
                 </div>
 
@@ -129,6 +153,20 @@ export default function Pricing() {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.p
+          className="text-center text-sm text-[#666] mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          Not sure which package fits?{" "}
+          <a href="/contact" className="text-[#AAAAAA] underline underline-offset-2 hover:text-white transition-colors">
+            Book a free audit
+          </a>{" "}
+          — we&apos;ll recommend the right one. No commitment required.
+        </motion.p>
       </div>
     </section>
   );
