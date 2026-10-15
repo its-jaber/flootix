@@ -7,15 +7,15 @@ import FAQ from "@/components/sections/FAQ";
 import DemoProjects from "@/components/sections/DemoProjects";
 import Testimonials from "@/components/sections/Testimonials";
 import Pricing from "@/components/sections/Pricing";
-import Results from "@/components/sections/Results";
 import Guarantee from "@/components/sections/Guarantee";
+import Results from "@/components/sections/Results";
 import About from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
   title: "Flowtix — AI Growth Systems Agency | Automate. Capture. Grow.",
   description:
-    "Flowtix helps businesses in Bangladesh generate more leads, automate customer communication, and convert inquiries into paying customers through AI-powered websites and automation systems.",
+    "Flowtix builds AI Growth Systems for service businesses worldwide — so they never miss a lead, never lose a booking, and never chase a follow-up manually again. Live in 14 days.",
 };
 
 export default function Home() {

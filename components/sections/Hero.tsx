@@ -1,179 +1,255 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import Button from "@/components/ui/Button";
-import SectionLabel from "@/components/ui/SectionLabel";
-import WorkflowDiagram from "@/components/WorkflowDiagram";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight, Calendar } from "lucide-react";
+import Image from "next/image";
 
-const KPICard = ({
-  value,
-  label,
-  delay,
-  className,
-}: {
-  value: string;
-  label: string;
-  delay: number;
-  className?: string;
-}) => (
-  <motion.div
-    className={`absolute bg-[#141414] border border-[#2A2A2A] rounded-2xl px-4 py-3 shadow-2xl ${className}`}
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay, duration: 0.5, type: "spring" }}
-  >
-    <p className="text-sm font-bold text-[#2170e9] whitespace-nowrap">{value}</p>
-    <p className="text-[11px] text-[#888] whitespace-nowrap mt-0.5">{label}</p>
-  </motion.div>
-);
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const kpis = [
+  { v: "+340%", l: "Lead Response" },
+  { v: "0",     l: "Missed Leads"  },
+  { v: "3×",    l: "Conversions"   },
+  { v: "24/7",  l: "Always On"     },
+  { v: "14d",   l: "Guaranteed"    },
+];
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const bgY      = useTransform(scrollYProgress, [0, 1], ["0%",   "22%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%",   "10%"]);
+  const fade     = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-8 overflow-hidden text-center">
-      {/* Hero orb */}
-      <div
-        className="animate-orb absolute top-[-15%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(30,30,30,0.8) 0%, rgba(15,15,15,0.4) 40%, transparent 70%)",
-          boxShadow:
-            "0 0 250px 80px rgba(33,112,233,0.06), 0 0 100px 30px rgba(33,112,233,0.04)",
-        }}
-      />
-      {/* Top accent line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-[#2170e9]/30 to-transparent" />
+    <section
+      ref={ref}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden text-center"
+    >
+      {/* ── Background image + parallax ── */}
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
+        <Image
+          src="/hero-bg.webp"
+          alt=""
+          fill
+          priority
+          quality={90}
+          className="object-cover object-center"
+          aria-hidden="true"
+        />
+        {/* Wave depth gradients */}
+        <div className="absolute inset-0" style={{
+          background: [
+            "radial-gradient(ellipse 100% 55% at 5% 10%,  rgba(18,50,140,0.60) 0%, transparent 60%)",
+            "radial-gradient(ellipse 80%  45% at 95% 25%, rgba(35,90,200,0.35) 0%, transparent 55%)",
+            "radial-gradient(ellipse 150% 50% at 50% 100%,rgba(8,22,70,0.90)  0%, transparent 55%)",
+          ].join(","),
+        }} />
+        {/* Cinematic overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-[#050810]" />
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(ellipse 75% 55% at 50% 42%, transparent 20%, rgba(3,5,14,0.55) 80%)",
+        }} />
+      </motion.div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── Ambient glow orb ── */}
+      <motion.div
+        className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none z-[1]"
+        style={{ width: "min(760px,110vw)", height: "min(480px,65vw)" }}
+        animate={{ scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="w-full h-full rounded-full" style={{
+          background: "radial-gradient(ellipse at center, rgba(60,137,255,0.09) 0%, rgba(60,137,255,0.04) 40%, transparent 70%)",
+        }} />
+      </motion.div>
+
+      {/* ── Horizontal light streak ── */}
+      <motion.div
+        className="absolute left-0 right-0 h-px pointer-events-none z-[1]"
+        style={{ top: "44%" }}
+        animate={{ scaleX: [0.85, 1, 0.85], opacity: [0.4, 0.9, 0.4] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="w-full h-full" style={{
+          background: "linear-gradient(90deg, transparent 0%, rgba(60,137,255,0.18) 25%, rgba(120,180,255,0.30) 50%, rgba(60,137,255,0.18) 75%, transparent 100%)",
+        }} />
+      </motion.div>
+
+      {/* ── Content ── */}
+      <motion.div
+        className="relative z-10 flex flex-col items-center w-full max-w-[880px] mx-auto px-4 sm:px-6 py-28 sm:py-36"
+        style={{ y: contentY, opacity: fade }}
+      >
+        {/* Logo */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="mb-10"
+          initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6"
+          transition={{ duration: 0.65, ease }}
         >
-          <SectionLabel className="justify-center">
-            Now with AI-powered automation
-          </SectionLabel>
+          <Image src="/logo.svg" alt="FloowTix" width={152} height={42} priority unoptimized />
         </motion.div>
 
-        <motion.h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-[-0.03em]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          Stop Losing Leads.
-          <br />
-          <em className="accent-italic">Automate</em> Your
-          <br />
-          Follow-Up.
-        </motion.h1>
-
-        <motion.p
-          className="mt-4 text-xs font-semibold uppercase tracking-widest text-[#555]"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        >
-          Serving dental clinics, gyms, immigration agencies, and coaching centers — worldwide
-        </motion.p>
-
-        <motion.p
-          className="mt-4 text-lg text-[#AAAAAA] max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Flowtix helps businesses generate more leads, automate customer
-          communication, and improve follow-up through AI-powered websites
-          and automation systems — no code required.
-        </motion.p>
-
+        {/* Eyebrow */}
         <motion.div
-          className="mt-8 flex flex-wrap gap-3 justify-center"
-          initial={{ opacity: 0, y: 20 }}
+          className="inline-flex items-center gap-2 px-4 py-[7px] rounded-full mb-8 text-[10.5px] font-semibold tracking-[0.14em] uppercase"
+          style={{ border: "1px solid rgba(60,137,255,0.35)", background: "rgba(60,137,255,0.07)", color: "#3C89FF" }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.55, delay: 0.18, ease }}
         >
-          <Button href="/contact" size="lg">
-            Get Free Audit
-          </Button>
-          <Button href="#demo-projects" variant="ghost" size="lg">
-            <ChevronRight size={14} />
-            View Demo Projects
-          </Button>
+          <motion.span
+            className="w-[5px] h-[5px] rounded-full flex-shrink-0"
+            style={{ background: "#3C89FF", boxShadow: "0 0 6px #3C89FF" }}
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 2.4, repeat: Infinity }}
+          />
+          AI Growth Systems Agency
         </motion.div>
 
-        <motion.div
-          className="mt-5 flex justify-center"
-          initial={{ opacity: 0, y: 10 }}
+        {/* Headline — line-by-line reveal */}
+        <h1 className="font-extrabold leading-[1.03] tracking-[-0.025em] text-white mb-7"
+          style={{ fontSize: "clamp(2.8rem, 6.5vw, 5.5rem)" }}>
+          {[
+            { text: "Your Business.",  gradient: false, delay: 0.36 },
+            { text: "One Connected",   gradient: true,  delay: 0.50 },
+            { text: "AI System.",      gradient: false, delay: 0.64 },
+          ].map(({ text, gradient, delay }) => (
+            <span key={text} className="block overflow-hidden">
+              <motion.span
+                className={`block ${gradient ? "" : ""}`}
+                style={gradient ? {
+                  background: "linear-gradient(130deg, #e8f0ff 0%, #3C89FF 45%, #60a5fa 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                } : {}}
+                initial={{ y: "108%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.75, delay, ease }}
+              >
+                {text}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
+        {/* Subline */}
+        <motion.p
+          className="text-[#7a8ba6] mb-7 leading-[1.75]"
+          style={{ fontSize: "clamp(1rem, 1.8vw, 1.175rem)", maxWidth: 560 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
+          transition={{ duration: 0.6, delay: 0.68, ease }}
         >
-          <span
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[#22c55e]/30 text-[#22c55e]"
-            style={{ background: "rgba(34,197,94,0.08)" }}
+          Serving dental clinics, gyms, immigration agencies,
+          and coaching centers —{" "}
+          <span className="text-[#c8d4e8] font-medium">worldwide.</span>
+          <br className="hidden sm:block" />
+          Never miss a lead. Never chase a follow-up. Live in{" "}
+          <span className="text-[#3C89FF] font-semibold">14 days</span>.
+        </motion.p>
+
+        {/* Swiss divider */}
+        <motion.div
+          className="w-12 h-px mb-7"
+          style={{ background: "linear-gradient(90deg, transparent, #3C89FF, transparent)" }}
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, delay: 0.82, ease }}
+        />
+
+        {/* CTAs */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center gap-3 mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.88, ease }}
+        >
+          <a
+            href="/contact"
+            className="group inline-flex items-center gap-2.5 px-7 py-[15px] rounded-full text-[13.5px] font-bold text-white transition-all duration-200 whitespace-nowrap"
+            style={{
+              background: "linear-gradient(135deg, #1d5fd8 0%, #3C89FF 55%, #60a5fa 100%)",
+              boxShadow: "0 0 0 1px rgba(60,137,255,0.4), 0 4px 24px rgba(60,137,255,0.28), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.18)",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 0 0 1px rgba(60,137,255,0.55), 0 8px 36px rgba(60,137,255,0.40), 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.18)")}
+            onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 0 0 1px rgba(60,137,255,0.4), 0 4px 24px rgba(60,137,255,0.28), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.18)")}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] inline-block" />
-            Live in 14 days — or full refund
-          </span>
+            <Calendar size={15} aria-hidden="true" />
+            Book a 15-Minute Discovery Call
+            <ArrowRight
+              size={14}
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </a>
+
+          <a
+            href="#demo-projects"
+            className="inline-flex items-center gap-2 px-6 py-[14px] rounded-full text-[13.5px] font-medium text-[#7a8ba6] transition-all duration-200 hover:text-[#c8d4e8] whitespace-nowrap"
+            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}
+          >
+            View Demo Projects
+          </a>
         </motion.div>
 
-        {/* Workflow diagram card */}
+        {/* Guarantee badge */}
         <motion.div
-          className="relative mt-16 mx-auto max-w-2xl"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-[#22c55e] mb-12"
+          style={{ border: "1px solid rgba(34,197,94,0.28)", background: "rgba(34,197,94,0.07)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.02 }}
         >
-          <div className="relative bg-[#141414] border border-[#2A2A2A] rounded-3xl p-8 shadow-2xl">
-            {/* Window dots */}
-            <div className="flex items-center gap-1.5 mb-6">
-              <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-              <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
-              <div className="w-3 h-3 rounded-full bg-[#28C840]" />
-              <div className="ml-4 h-5 flex-1 max-w-48 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full flex items-center px-3">
-                <span className="text-[9px] text-[#666]">
-                  floowtix.com
-                </span>
-              </div>
-            </div>
-
-            <SectionLabel className="mb-5">Live Automation Flow</SectionLabel>
-            <WorkflowDiagram />
-
-            <div className="mt-5 flex items-center justify-center gap-2">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2170e9] opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#2170e9]" />
-              </span>
-              <span className="text-[11px] text-[#888]">
-                System running live
-              </span>
-            </div>
-          </div>
-
-          {/* Floating KPI cards */}
-          <KPICard
-            value="+340%"
-            label="Lead Response Speed"
-            delay={1}
-            className="animate-float -top-5 -left-8 hidden lg:block"
-          />
-          <KPICard
-            value="0 missed"
-            label="Inquiries"
-            delay={1.2}
-            className="animate-float-2 -bottom-5 -left-6 hidden lg:block"
-          />
-          <KPICard
-            value="3x"
-            label="More Conversions"
-            delay={1.4}
-            className="animate-float-3 top-8 -right-8 hidden lg:block"
-          />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] flex-shrink-0" />
+          Live in 14 days — or full refund
         </motion.div>
-      </div>
+
+        {/* KPI strip */}
+        <motion.div
+          className="flex items-stretch rounded-[18px] overflow-hidden"
+          style={{ border: "1px solid rgba(255,255,255,0.09)", background: "rgba(255,255,255,0.025)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.12, ease }}
+        >
+          {kpis.map((k, i) => (
+            <div
+              key={k.v}
+              className="flex flex-col items-center gap-0.5 px-5 py-3.5 transition-colors duration-200 hover:bg-[rgba(60,137,255,0.07)] cursor-default"
+              style={{ borderRight: i < kpis.length - 1 ? "1px solid rgba(255,255,255,0.09)" : "none" }}
+            >
+              <span className="text-[1.05rem] font-extrabold text-[#3C89FF] leading-none tracking-tight">{k.v}</span>
+              <span className="text-[10px] text-[#3a4d67] font-medium whitespace-nowrap tracking-wide">{k.l}</span>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* ── Bottom fade ── */}
+      <div className="absolute bottom-0 inset-x-0 h-32 pointer-events-none z-[2]"
+        style={{ background: "linear-gradient(to top, #050810, transparent)" }} />
+
+      {/* ── Scroll cue ── */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+        style={{ opacity: fade }}
+      >
+        <span className="text-[9px] font-semibold tracking-[0.18em] uppercase text-[#3a4d67]">Scroll</span>
+        <div className="w-[22px] h-9 rounded-full border border-white/10 flex justify-center pt-1.5 relative">
+          <motion.span
+            className="w-1 h-1 rounded-full bg-[#3C89FF] absolute"
+            animate={{ y: [0, 14, 0], opacity: [1, 0.2, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }

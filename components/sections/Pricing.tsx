@@ -11,7 +11,7 @@ const plans = [
     setup: "$249",
     monthly: "$349",
     commitment: "3-month minimum commitment",
-    bestFor: "Small businesses getting started",
+    description: "Best for small businesses getting started with automation.",
     features: [
       "Professional landing page",
       "Lead capture form",
@@ -19,6 +19,8 @@ const plans = [
       "Mobile responsive design",
       "1 revision round",
     ],
+    cta: "Get Started",
+    ctaVariant: "dark" as const,
     featured: false,
   },
   {
@@ -26,7 +28,7 @@ const plans = [
     setup: "$499",
     monthly: "$699",
     commitment: "3-month minimum commitment",
-    bestFor: "Coaching centers, gyms, clinics",
+    description: "Best for coaching centers, gyms, and clinics.",
     features: [
       "Full website (up to 5 pages)",
       "Lead generation form + tracking",
@@ -37,6 +39,8 @@ const plans = [
       "Monthly performance report",
       "2 revision rounds",
     ],
+    cta: "Book Free Audit",
+    ctaVariant: "primary" as const,
     featured: true,
   },
   {
@@ -44,7 +48,7 @@ const plans = [
     setup: "$899",
     monthly: "$1,199",
     commitment: "6-month minimum commitment",
-    bestFor: "Businesses that want full automation",
+    description: "Best for businesses that want full automation.",
     features: [
       "Everything in Growth",
       "CRM & lead management system",
@@ -55,6 +59,8 @@ const plans = [
       "Priority support",
       "3 revision rounds",
     ],
+    cta: "Book Free Audit",
+    ctaVariant: "dark" as const,
     featured: false,
   },
 ];
@@ -69,7 +75,7 @@ export default function Pricing() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-4"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -80,12 +86,12 @@ export default function Pricing() {
             <em className="accent-italic">No Hidden Fees.</em>
           </h2>
           <p className="mt-4 text-[#888] text-lg">
-            One setup fee. Then a monthly management fee. Transparent pricing, no surprises.
+            One setup fee. Then a monthly management fee. No surprises.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -110,32 +116,38 @@ export default function Pricing() {
 
                 <div className="mb-6">
                   <p className="text-sm font-semibold text-[#AAAAAA] mb-3">{plan.name}</p>
-                  <div className="mb-1">
-                    <span className="text-3xl font-black text-white tracking-tight">{plan.setup} setup</span>
+                  <div className="mb-2">
+                    <div className="flex items-end gap-1">
+                      <span className="text-4xl font-black text-white tracking-tight">
+                        {plan.setup}
+                      </span>
+                      <span className="text-[#666] mb-1.5 text-sm">setup</span>
+                    </div>
+                    <div className="flex items-end gap-1 mt-0.5">
+                      <span className="text-2xl font-bold text-[#AAAAAA] tracking-tight">
+                        {plan.monthly}
+                      </span>
+                      <span className="text-[#555] mb-0.5 text-sm">/month</span>
+                    </div>
                   </div>
-                  <div className="mb-1">
-                    <span className="text-xl font-bold text-[#2170e9]">+ {plan.monthly}/month</span>
-                  </div>
-                  <p className="text-xs text-[#555] mb-3">{plan.commitment}</p>
-                  <p className="text-sm text-[#888] leading-relaxed">
-                    Best for: {plan.bestFor}
-                  </p>
+                  <p className="text-[11px] text-[#555] mb-3">{plan.commitment}</p>
+                  <p className="text-sm text-[#888] leading-relaxed">{plan.description}</p>
                 </div>
 
                 <div className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f) => (
-                    <div key={f} className="flex items-start gap-2.5">
+                    <div key={f} className="flex items-center gap-2.5">
                       <Check
                         size={13}
-                        className={`mt-0.5 shrink-0 ${plan.featured ? "text-[#2170e9]" : "text-[#555]"}`}
+                        className={plan.featured ? "text-[#2170e9]" : "text-[#555]"}
                       />
                       <span className="text-sm text-[#AAAAAA]">{f}</span>
                     </div>
                   ))}
                 </div>
 
-                <Button href="/contact" variant={plan.featured ? "primary" : "dark"} className="w-full justify-center">
-                  Book Free Audit
+                <Button href="/contact" variant={plan.ctaVariant} className="w-full justify-center">
+                  {plan.cta}
                 </Button>
               </div>
             </motion.div>
@@ -143,14 +155,14 @@ export default function Pricing() {
         </motion.div>
 
         <motion.p
-          className="text-center text-sm text-[#555] mt-8"
+          className="text-center text-sm text-[#666] mt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
           Not sure which package fits?{" "}
-          <a href="/contact" className="text-[#2170e9] hover:underline">
+          <a href="/contact" className="text-[#AAAAAA] underline underline-offset-2 hover:text-white transition-colors">
             Book a free audit
           </a>{" "}
           — we&apos;ll recommend the right one. No commitment required.

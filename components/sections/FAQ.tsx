@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "Our packages start from 10,000 BDT. We offer transparent pricing with no hidden fees or monthly subscriptions.",
+    a: "Our packages start from $249 setup + $349/month. We offer transparent pricing with no hidden fees.",
   },
   {
     q: "Will my leads be tracked automatically?",
@@ -32,37 +32,9 @@ const faqs = [
   },
 ];
 
-function FAQItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-[#1F1F1F]">
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left"
-      >
-        <span className="text-sm font-semibold text-white">{q}</span>
-        <span className="shrink-0 w-6 h-6 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center">
-          {open ? <Minus size={12} className="text-[#2170e9]" /> : <Plus size={12} className="text-[#666]" />}
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            className="overflow-hidden"
-          >
-            <p className="pb-5 text-sm text-[#888] leading-relaxed">{a}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
 export default function FAQ() {
+  const [open, setOpen] = useState<number | null>(null);
+
   return (
     <section className="py-28 relative">
       <div className="absolute top-0 inset-x-0 h-px bg-[#1F1F1F]" />
@@ -76,18 +48,46 @@ export default function FAQ() {
         >
           <SectionLabel className="justify-center mb-4">FAQ</SectionLabel>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Common Questions
+            Common <em className="accent-italic">Questions</em>
           </h2>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-3"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          {faqs.map((faq) => (
-            <FAQItem key={faq.q} q={faq.q} a={faq.a} />
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className="bg-[#111111] border border-[#2A2A2A] rounded-xl overflow-hidden hover:border-[#3A3A3A] transition-colors"
+            >
+              <button
+                className="w-full flex items-center justify-between gap-4 p-5 text-left"
+                onClick={() => setOpen(open === i ? null : i)}
+              >
+                <span className="text-sm font-semibold text-white">{faq.q}</span>
+                <span className="shrink-0 text-[#555]">
+                  {open === i ? <Minus size={15} /> : <Plus size={15} />}
+                </span>
+              </button>
+
+              <AnimatePresence initial={false}>
+                {open === i && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                  >
+                    <p className="px-5 pb-5 text-sm text-[#888] leading-relaxed">{faq.a}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
         </motion.div>
       </div>
