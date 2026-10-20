@@ -22,4 +22,4 @@ These terms apply to (a) businesses that use Flowtix AI Messenger ("clients") an
 9. **Liability.** To the extent permitted by law, Flowtix is not liable for indirect losses or for losses caused by incorrect information entered by the client.
 
 ## Contact
-Flowtix — floowtix.com — **jaber@floowtix.co**
+Flowtix — floowtix.com — **jaber@floowtix.com**

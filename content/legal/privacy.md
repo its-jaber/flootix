@@ -46,4 +46,4 @@ The service is not intended for children under 13.
 
 ## 8. Contact
 Flowtix — floowtix.com
-Email: **jaber@floowtix.co**
+Email: **jaber@floowtix.com**

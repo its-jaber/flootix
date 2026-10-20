@@ -8,7 +8,7 @@ You can ask us to delete the information we hold about you from conversations wi
 Send the message **"DELETE MY DATA"** to the Facebook Page you chatted with. A team member will confirm and process your request.
 
 **Option 2 — Email**
-Email **jaber@floowtix.co** with:
+Email **jaber@floowtix.com** with:
 - the name of the Facebook Page you messaged
 - your name as shown on Facebook
 - the mobile number you used for an order, if any
