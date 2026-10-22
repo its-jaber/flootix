@@ -1,6 +1,6 @@
-# Data Deletion Instructions — Flowtix AI Messenger
+# Data Deletion Instructions — Floowtix AI Messenger
 
-You can ask us to delete the information we hold about you from conversations with any Facebook Page that uses Flowtix AI Messenger.
+You can ask us to delete the information we hold about you from conversations with any Facebook Page that uses Floowtix AI Messenger.
 
 ## How to request deletion
 
@@ -8,7 +8,7 @@ You can ask us to delete the information we hold about you from conversations wi
 Send the message **"DELETE MY DATA"** to the Facebook Page you chatted with. A team member will confirm and process your request.
 
 **Option 2 — Email**
-Email **jaber@floowtix.co** with:
+Email [jaber@floowtix.co](mailto:jaber@floowtix.co) with:
 - the name of the Facebook Page you messaged
 - your name as shown on Facebook
 - the mobile number you used for an order, if any
@@ -23,4 +23,6 @@ We may keep order records that the business must keep by law (for example, for t
 ## How long it takes
 We confirm your request within **3 working days** and complete the deletion within **30 days**.
 
-Flowtix — floowtix.com
+Floowtix — floowtix.com
+
+Alternative contact: [contact@floowtix.com](mailto:contact@floowtix.com).

@@ -6,7 +6,7 @@ import { NAV_LINKS, FOOTER_INDUSTRIES, SITE } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="relative border-t border-[#1F1F1F] bg-[#0A0A0A]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-28">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
@@ -77,9 +77,21 @@ export default function Footer() {
           <p className="text-xs text-[#555]">
             © 2026 Flowtix. All rights reserved.
           </p>
-          <p className="text-xs text-[#555]">
-            Built for businesses that want to grow faster.
-          </p>
+          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            {[
+              { href: "/privacy", label: "Privacy Policy" },
+              { href: "/terms", label: "Terms of Service" },
+              { href: "/data-deletion", label: "Data Deletion" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-xs text-[#888] hover:text-white focus-visible:text-white transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>

@@ -100,8 +100,8 @@ function render(md: string): ReactNode[] {
 export default function LegalPage({ file }: { file: string }) {
   const md = fs.readFileSync(path.join(process.cwd(), "content/legal", file), "utf8");
   return (
-    <main className="px-5 pb-24 pt-32 sm:px-6 sm:pt-36">
+    <div className="px-5 pb-24 pt-32 sm:px-6 sm:pt-36">
       <article className="mx-auto max-w-3xl">{render(md)}</article>
-    </main>
+    </div>
   );
 }

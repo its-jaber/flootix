@@ -1,8 +1,8 @@
-# Privacy Policy — Flowtix AI Messenger
+# Privacy Policy — Floowtix AI Messenger
 
 *Last updated: 20 October 2026*
 
-Flowtix ("we", "us") provides an AI assistant that answers customer messages on Facebook Pages of businesses that hire us ("our clients"). This policy explains what information we handle when you message one of those Pages, and how.
+Floowtix ("we", "us") provides an AI assistant that answers customer messages on Facebook Pages of businesses that hire us ("our clients"). This policy explains what information we handle when you message one of those Pages, and how.
 
 ## 1. Information we receive
 When you send a message to a Facebook Page that uses our service, Meta Platforms sends us:
@@ -39,11 +39,13 @@ Conversation and order records are kept while the business uses our service, and
 - You can ask what information we hold about you, or ask us to correct it, by emailing us.
 
 ## 6. Security
-Access to stored records is limited to the business and Flowtix staff who operate the service. Credentials are stored encrypted, and all connections use HTTPS.
+Access to stored records is limited to the business and Floowtix staff who operate the service. Credentials are stored encrypted, and all connections use HTTPS.
 
 ## 7. Children
 The service is not intended for children under 13.
 
 ## 8. Contact
-Flowtix — floowtix.com
-Email: **jaber@floowtix.co**
+Floowtix — floowtix.com
+Email: [jaber@floowtix.co](mailto:jaber@floowtix.co)
+
+Alternative contact: [contact@floowtix.com](mailto:contact@floowtix.com).
