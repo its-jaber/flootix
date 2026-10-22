@@ -79,6 +79,7 @@ export default function Footer() {
           </p>
           <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2">
             {[
+              { href: "/aim", label: "AIM" },
               { href: "/privacy", label: "Privacy Policy" },
               { href: "/terms", label: "Terms of Service" },
               { href: "/data-deletion", label: "Data Deletion" },

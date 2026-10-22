@@ -11,6 +11,7 @@ import Guarantee from "@/components/sections/Guarantee";
 import Results from "@/components/sections/Results";
 import About from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
+import AIM from "@/components/sections/AIM";
 
 export const metadata: Metadata = {
   title: "Flowtix — AI Growth Systems Agency | Automate. Capture. Grow.",
@@ -31,6 +32,7 @@ export default function Home() {
       <Guarantee />
       <Results />
       <About />
+      <AIM />
       <FAQ />
       <CTA />
     </>
